@@ -26,6 +26,33 @@ import { CustomizerComponent } from '@app/shared/customizer/customizer.component
 import { NotificationSidebarComponent } from '@app/shared/notification-sidebar/notification-sidebar.component';
 import { ToggleFullscreenDirective } from '@app/shared/directives/toggle-fullscreen.directive';
 import { StateSelectComponent } from '@app/shared/components/state-select/state-select';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip'
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -49,6 +76,33 @@ import { StateSelectComponent } from '@app/shared/components/state-select/state-
     NgxMaskModule,
     NgxPhoneMaskModule,
     PortalModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatButtonToggleModule,
+    MatProgressBarModule,
+    MatDatepickerModule
   ],
   declarations: [
     FooterComponent,
@@ -89,7 +143,34 @@ import { StateSelectComponent } from '@app/shared/components/state-select/state-
     CustomizerComponent,
     NotificationSidebarComponent,
     ToggleFullscreenDirective,
-    StateSelectComponent
+    StateSelectComponent,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatButtonToggleModule,
+    MatProgressBarModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule {}
