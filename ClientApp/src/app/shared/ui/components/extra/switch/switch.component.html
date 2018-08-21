@@ -1,0 +1,121 @@
+<section id="switch">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">Switch</div>
+      <p class="content-sub-header"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Checked</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch checked></ui-switch>
+            <ui-switch [checked]="false"></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Disabled</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch disabled></ui-switch>
+            <ui-switch checked [disabled]="true"></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Two way binding</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch [(ngModel)]="enable"></ui-switch> {{enable}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Change</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch (change)="onChange()"></ui-switch> change count {{count}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Size</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch size="small"></ui-switch>
+            <ui-switch></ui-switch>
+            <ui-switch size="large"></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Reverse</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch reverse></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>color</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch></ui-switch>
+            <ui-switch color="blue"></ui-switch>
+            <ui-switch color="red"></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>switchColor</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <ui-switch switchColor="red"></ui-switch>
+            <ui-switch switchColor="blue"></ui-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+
+    </div>
+  </div>
+
+</section>

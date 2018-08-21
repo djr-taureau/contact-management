@@ -1,0 +1,102 @@
+@include exports( 'listbox/layout' ) {
+    $listbox-margin: $padding-x !default;
+    $listbox-button-margin: $padding-x !default;
+    $listbox-width: 12.4em !default;
+    $listbox-default-height: 200px !default;
+    $listbox-drop-hint-width: 1px !default;
+    $listbox-drag-clue-padding-y: $list-item-padding-y !default;
+    $listbox-drag-clue-padding-x: $list-item-padding-x !default;
+    $listbox-drag-clue-line-height: $line-height-em !default;
+
+    .k-listbox {
+        width: $listbox-width;
+        height: $listbox-default-height;
+        vertical-align: top;
+        background-color: transparent;
+        border-width: 0;
+        display: inline-flex;
+
+        .k-listbox-toolbar ul {
+            display: flex;
+        }
+
+        &.k-listbox-toolbar-left,
+        &.k-listbox-toolbar-right {
+            .k-listbox-toolbar ul {
+                flex-direction: column;
+            }
+
+            .k-listbox-toolbar li + li {
+                margin-top: $listbox-button-margin;
+            }
+        }
+
+        &.k-listbox-toolbar-left {
+            flex-direction: row;
+
+            .k-listbox-toolbar {
+                margin-right: $listbox-margin;
+            }
+        }
+
+        &.k-listbox-toolbar-right {
+            flex-direction: row-reverse;
+
+            .k-listbox-toolbar {
+                margin-left: $listbox-margin;
+            }
+        }
+
+        &.k-listbox-toolbar-top,
+        &.k-listbox-toolbar-bottom {
+            flex-direction: column;
+
+            .k-listbox-toolbar ul {
+                flex-direction: row;
+            }
+
+            .k-listbox-toolbar li + li {
+                margin-left: $listbox-button-margin;
+            }
+        }
+
+        &.k-listbox-toolbar-top {
+            .k-listbox-toolbar {
+                margin-bottom: $listbox-margin;
+            }
+        }
+
+        &.k-listbox-toolbar-bottom {
+            .k-listbox-toolbar {
+                margin-top: $listbox-margin;
+            }
+        }
+
+        .k-list-scroller {
+            width: 100%;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .k-drop-hint {
+            border-top-width: $listbox-drop-hint-width;
+            border-top-style: solid;
+        }
+
+        .k-ghost {
+            opacity: .5;
+        }
+    }
+
+    .k-item {
+        cursor: default;
+    }
+
+    .k-item.k-drag-clue {
+        @include border-radius( 0 );
+        padding: $listbox-drag-clue-padding-y $listbox-drag-clue-padding-x;
+        line-height: $listbox-drag-clue-line-height;
+        border-width: 0;
+        font-size: $font-size;
+    }
+}

@@ -1,0 +1,43 @@
+$dropdowntree-popup-spacer-x: $padding-y-lg !default;
+$dropdowntree-popup-spacer-y: $dropdowntree-popup-spacer-x !default;
+$dropdowntree-filter-shadow: $popup-shadow !default;
+$dropdowntree-checkall-padding: add-three($checkbox-size, $icon-spacing, $treeview-item-padding-x) !default;
+$dropdowntree-filter-spacer: $dropdowntree-popup-spacer-y !default;
+
+@include exports("dropdowntree/layout") {
+
+    // Dropdowntree popup
+    .k-popup-dropdowntree {
+        padding: 0;
+
+        .k-list-filter {
+            box-shadow: $dropdowntree-filter-shadow;
+            margin: 0 0 $dropdowntree-filter-spacer;
+        }
+
+        .k-check-all .k-checkbox-label {
+            padding-left: $dropdowntree-checkall-padding;
+        }
+
+        .k-check-all {
+            padding: $dropdowntree-popup-spacer-y $dropdowntree-popup-spacer-x 0;
+        }
+        .k-list-filter .k-check-all {
+            padding-top: 0;
+        }
+
+        .k-treeview {
+            padding: $dropdowntree-popup-spacer-y $dropdowntree-popup-spacer-x;
+        }
+
+        &.k-rtl,
+        [dir='rtl'] & {
+
+            .k-check-all .k-checkbox-label {
+                padding-left: 0;
+                padding-right: $dropdowntree-checkall-padding;
+            }
+
+        }
+    }
+}

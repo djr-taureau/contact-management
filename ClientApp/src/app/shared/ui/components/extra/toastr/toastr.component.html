@@ -1,0 +1,120 @@
+<!--Toastr Starts-->
+<section id="toastr">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            <div class="content-header">Toastr</div>
+            <p class="content-sub-header">By default, the toastr will show up at top right corner of the page view, and will automatically dismiss in 3 seconds. You can configure the toasts using ToastOptions class.</p>
+        </div>
+    </div>
+
+    <!-- Types section start -->
+    <section id="types">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Types</div>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="row mt-1">
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <button type="button" class="btn btn-success btn-block btn-raised mb-5" id="type-success" (click)="typeSuccess()">Success</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <button type="button" class="btn btn-danger btn-block btn-raised mb-5" id="type-error" (click)="typeError()">Error</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <button type="button" class="btn btn-info btn-block btn-raised mb-5" id="type-info" (click)="typeInfo()">Info</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-1 text-center">
+                            <button type="button" class="btn btn-warning btn-block btn-raised mb-5" id="type-warning" (click)="typeWarning()">Warning</button>
+                        </div>
+                        <div class="col-md-4 col-md-offset-1 text-center">
+                            <button type="button" class="btn btn-secondary btn-block btn-raised mb-5" id="type-custom" (click)="typeCustom()">Custom</button>
+                        </div>
+                        <div class="col-md-4 col-md-offset-1 text-center">                            
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="progress-bar" (click)="progressBar()">With Progress Bar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // Types section end -->
+
+    <!-- Duration & Timeout section start -->
+    <section id="duration-timeout">
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
+                <div class="content-header">Dissmiss Options</div>
+                <p class="content-sub-header">Determine how a displayed toaster can be dismissed. Allowed values are: 'auto', 'click', 'controlled'.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <h5>Auto</h5>
+                            <p>Toaster will auto dismiss in miliseconds.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="timeout" (click)="timeout()">Show Toast</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <h5>Click</h5>
+                            <p>Toaster will be dismissed when user click on it.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="show-clear-toast" (click)="dismissToastOnClick()">Clear Toast on Click</button>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // Duration & Timeout section end -->
+
+    <!-- Clear toasts section start -->
+    <section id="clear-toasts">
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
+                <div class="content-header">Toast Options</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="row mt-1">
+                        <div class="col-md-4 col-sm-12">
+                            <h5 class="mt-4">Show Close Button</h5>
+                            <p>Determines whether toast should include 'x' close button. Defaults to false.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="close-button" (click)="showCloseButton()">With Close Icon</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <h5 class="mt-4">Title Class</h5>
+                            <p>CSS class for title within toast.Adding <code>h3</code> class to title.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="title-class" (click)="titleClass()">Title Class</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <h5 class="mt-4">Message Class</h5>
+                            <p>CSS class for message within toast. Adding <code>text-uppercase</code> class to message.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="message-class" (click)="messageClass()">Message Class</button>
+                        </div>
+                    </div>
+                    <div class="row mt-1">                
+                        <div class="col-md-4 col-sm-12">
+                            <h5 class="mt-4">Enable HTML</h5>
+                            <p>Allow input of message to be HTML. Default to false.</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="html-toast" (click)="enableHtml()">HTML Enabled</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <h5 class="mt-4">Clear</h5>
+                            <p>Remove current toasts</p>
+                            <button type="button" class="btn btn-primary btn-block btn-raised" id="show-clear-toast" (click)="clearToast()">Clear Toast</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // Clear toasts section end -->
+</section>
+<!--Toastr Ends-->

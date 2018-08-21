@@ -1,0 +1,220 @@
+<!-- Wizard Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">Wizard Forms</div>
+    </div>
+</div>
+<section id="icon-tabs">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Form wizard with icon tabs</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <form class="icons-tab-steps wizard-circle" #ngIf="ngForm">
+              <!-- Step 1 -->
+              <h6>Step 1</h6>
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="firstName2">First Name</label>
+                      <input type="text" class="form-control" id="firstName2" name="firstName2">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lastName2">Last Name</label>
+                      <input type="text" class="form-control" id="lastName2" name="lastName2">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="emailAddress3">Email Address</label>
+                      <input type="email" class="form-control" id="emailAddress3" name="emailAddress3">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="location2">Select City</label>
+                      <select class="custom-select form-control" id="location2" name="location2">
+                        <option value="">Select City</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Frankfurt">Frankfurt</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="phoneNumber2">Phone Number</label>
+                      <input type="tel" class="form-control" id="phoneNumber2" name="phoneNumber2">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="date2">Date of Birth</label>
+                      <input type="date" class="form-control" id="date2" name="date2">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- Step 2 -->
+              <h6>Step 2</h6>
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="proposalTitle2">Proposal Title</label>
+                      <input type="text" class="form-control" id="proposalTitle2" name="proposalTitle2">
+                    </div>
+                    <div class="form-group">
+                      <label for="emailAddress4">Email Address</label>
+                      <input type="email" class="form-control" id="emailAddress4" name="emailAddress4">
+                    </div>
+                    <div class="form-group">
+                      <label for="videoUrl2">Video URL</label>
+                      <input type="url" class="form-control" id="videoUrl2" name="videoUrl2">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="jobTitle3">Job Title</label>
+                      <input type="text" class="form-control" id="jobTitle3" name="jobTitle3">
+                    </div>
+                    <div class="form-group">
+                      <label for="shortDescription2">Short Description</label>
+                      <textarea name="shortDescription" id="shortDescription2" rows="4" class="form-control"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- Step 3 -->
+              <h6>Step 3</h6>
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="eventName2">Event Name</label>
+                      <input type="text" class="form-control" id="eventName2" name="eventName2">
+                    </div>
+                    <div class="form-group">
+                      <label for="eventType2">Event Type</label>
+                      <select class="custom-select form-control" id="eventType2" data-placeholder="Type to search cities" name="eventType2">
+                        <option value="Banquet">Banquet</option>
+                        <option value="Fund Raiser">Fund Raiser</option>
+                        <option value="Dinner Party">Dinner Party</option>
+                        <option value="Wedding">Wedding</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="eventLocation2">Event Location</label>
+                      <select class="custom-select form-control" id="eventLocation2" name="eventLocation2">
+                        <option value="">Select City</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Frankfurt">Frankfurt</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Event Date - Time</label>
+                      <div class='input-group'>
+                        <input type='text' class="form-control datetime" id="eventDatetime1" name="eventDatetime1" />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                                    <span class="fa fa-calendar-o"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="eventStatus2">Event Status</label>
+                      <select class="custom-select form-control" id="eventStatus2" name="eventStatus2">
+                          <option value="Planning">Planning</option>
+                          <option value="In Progress">In Progress</option>
+                          <option value="Finished">Finished</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <span>Requirements</span>
+                      <div class="checkbox">
+                          <div class="custom-control custom-checkbox m-0">
+                            <input type="checkbox" class="custom-control-input" id="staffing">
+                            <label class="custom-control-label" for="staffing">Staffing</label>
+                          </div>
+                      </div>
+                      <div class="checkbox">
+                          <div class="custom-control custom-checkbox m-0">
+                            <input type="checkbox" class="custom-control-input" id="catering">
+                            <label class="custom-control-label" for="catering">Catering</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- Step 4 -->
+              <h6>Step 4</h6>
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="meetingName2">Name of Meeting</label>
+                      <input type="text" class="form-control" id="meetingName2" name="meetingName2">
+                    </div>
+                    <div class="form-group">
+                      <label for="meetingLocation2">Location</label>
+                      <input type="text" class="form-control" id="meetingLocation2" name="meetingLocation2">
+                    </div>
+                    <div class="form-group">
+                      <label for="participants2">Names of Participants</label>
+                      <textarea name="participants" id="participants2" rows="4" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="decisions2">Decisions Reached</label>
+                      <textarea name="decisions" id="decisions2" rows="4" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Agenda Items</label>
+                      <div class="custom-control custom-checkbox m-0">
+                        <input type="checkbox" class="custom-control-input" id="1st-item">
+                        <label class="custom-control-label" for="1st-item">1st item</label>
+                      </div>
+                      <div class="custom-control custom-checkbox m-0">
+                        <input type="checkbox" class="custom-control-input" id="2nd-item">
+                        <label class="custom-control-label" for="2nd-item">2nd item</label>
+                      </div>
+                      <div class="custom-control custom-checkbox m-0">
+                        <input type="checkbox" class="custom-control-input" id="3rd-item">
+                        <label class="custom-control-label" for="3rd-item">3rd item</label>
+                      </div>
+                      <div class="custom-control custom-checkbox m-0">
+                        <input type="checkbox" class="custom-control-input" id="4th-item">
+                        <label class="custom-control-label" for="4th-item">4th item</label>
+                      </div>
+                      <div class="custom-control custom-checkbox m-0">
+                        <input type="checkbox" class="custom-control-input" id="5th-item">
+                        <label class="custom-control-label" for="5th-item">5th item</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Wizard Ends -->

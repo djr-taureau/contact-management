@@ -1,0 +1,165 @@
+<!-- Line Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">ChartJS</div>
+        <p class="content-sub-header">Chart.js can be used with ES6 modules, plain JavaScript and module loaders.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Line Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="height-400">
+                            <canvas height="400" baseChart class="chart" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                            [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Line Chart Ends -->
+
+<!-- Area Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Area Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="height-400">
+                            <canvas height="400" baseChart class="chart" [datasets]="areaChartData" [labels]="areaChartLabels" [options]="areaChartOptions" [colors]="areaChartColors"
+                            [legend]="areaChartLegend" [chartType]="areaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Area Chart Ends -->
+
+<!-- Scatter Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">SCATTER LOGX CHART</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="height-400">
+                            <canvas id="scatter-chart"  height="400" baseChart class="chart" [datasets]="scatterChartData" [labels]="scatterChartLabels" [options]="scatterChartOptions" [colors]="scatterChartColors"
+                            [legend]="scatterChartLegend" [chartType]="scatterChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Scatter Chart Ends -->
+
+<!-- Bar Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Bar Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="bar-bar1" class="height-400">
+                        <canvas baseChart class="chart" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors" [legend]="barChartLegend"
+                            [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bar Chart Ends -->
+
+<!-- Doughnut Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Doughnut Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="bar-doughnut" class="height-400">
+                        <canvas baseChart  class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors" 
+                            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Doughnut Chart Ends -->
+
+<!-- Radar Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Radar Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="radar-chart1" class="height-400">
+                        <canvas baseChart class="chart" [datasets]="radarChartData" [labels]="radarChartLabels" [options]="radarChartOptions" [chartType]="radarChartType" [colors]="radarChartColors" (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Radar Chart Ends -->
+
+<!-- Pie Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Pie Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="pie-chart1" class="height-400">
+                        <canvas baseChart class="chart" [data]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [chartType]="pieChartType" (chartHover)="chartHovered($event)" [colors]="pieChartColors"
+                            (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pie Chart Ends -->
+
+<!-- Polar Area Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Polar Area Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="area-chart1" class="height-400">
+                        <canvas baseChart class="chart" [data]="polarAreaChartData" [options]="polarChartOptions" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" [colors] ="ploarChartColors"
+                            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Polar Area Chart Ends -->

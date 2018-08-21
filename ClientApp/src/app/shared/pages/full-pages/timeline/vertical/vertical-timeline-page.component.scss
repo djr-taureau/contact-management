@@ -1,0 +1,38 @@
+:host /deep/ .ct-area {
+    stroke: none;
+    fill-opacity: 0.1;
+}
+
+:host /deep/ .ct-grid{
+    stroke-dasharray: 0px;
+    stroke: rgba(0, 0, 0, 0.1);
+}
+
+:host /deep/ .ct-label{
+    font-size: 0.9rem;
+}
+
+// Line with Area Chart 1 CSS Starts
+
+:host /deep/ .lineArea1 .ct-series-a .ct-area {
+    fill-opacity: 0.3;
+    fill: #FF586B;
+}
+
+:host /deep/ .lineArea1 .ct-series-b .ct-area {
+    fill: #FF586B;
+    fill-opacity: 0.6;
+}
+:host /deep/ .lineArea1 .ct-line{
+    stroke: #FF586B;
+    stroke-width: 0px;
+}
+:host /deep/ .lineArea1 .ct-point {
+    stroke-width: 0px;
+}
+
+// Line with Area Chart 1 CSS Ends
+
+agm-map {
+    height: 450px;
+  }

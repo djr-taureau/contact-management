@@ -1,0 +1,12 @@
+<form class="form-inline">
+  <div class="form-group">
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="popupModel" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <div class="input-group-text" (click)="d.toggle()">
+          <i class="fa fa-calendar" style="cursor: pointer;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

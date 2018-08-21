@@ -1,0 +1,1128 @@
+@include exports('grid/layout') {
+
+    $input-border-width: 1px;
+    $filter-rows-span-size: calc( #{$line-height-em} + #{$input-padding-y * 2} + #{$input-border-width * 2}) !default;
+
+    $grid-group-dropclue-size: 6px;
+    $grid-group-dropclue-line-size: $grid-group-dropclue-size / 3;
+
+    $edit-cell-input-space: calc(-#{$cell-padding} - #{$input-border-width}) !default;
+
+    $edit-cell-textbox-width: calc(100% + ((#{$cell-padding} + #{$input-border-width}) * 2)) !default;
+
+    $grid-row-inner-height: add-two( $line-height-em, $cell-padding-y * 2 );
+    // $grid-row-half-inner-height: add-two( $line-height-em / 2, $cell-padding-y );
+
+    // be cautious when changing the next line; see https://github.com/MoOx/reduce-css-calc/issues/38
+    $grid-form-component-offset: calc( (#{$line-height-em} + (-1 * #{button-size()})) / 2 ) !default;
+
+    $grid-form-component-vertical-align: middle !default;
+    $grid-hierarchy-col-width: ($icon-size * 2) !default;
+    $grid-cell-horizontal-border-width: 0 !default;
+    $grid-cell-vertical-border-width: 1px !default;
+    $grid-cell-padding-x: $cell-padding-x !default;
+    $grid-cell-padding-y: $cell-padding-y !default;
+    // $grid-header-cell-padding-x does not make sense - header and cell content needs to be aligned
+    $grid-header-cell-padding-y: $grid-cell-padding-y !default;
+
+    // a more sensible default would be $grid-cell-padding-x, but default theme uses a smaller filter row padding-x
+    $grid-filter-cell-padding-x: $cell-padding !default;
+    $grid-filter-cell-padding-y: $grid-cell-padding-y !default;
+    $grid-filter-input-text-indent: $padding-x !default;
+
+    $grid-grouping-header-padding-x: $toolbar-padding-y !default;
+    $grid-grouping-header-padding-y: $toolbar-padding-y !default;
+    $grid-group-indicator-border-radius: $border-radius !default;
+    $grid-group-indicator-gap: $cell-padding-y !default;
+
+    $grid-grouping-row-border-top: 1px !default;
+    $grid-group-footer-border-y: 1px !default;
+    $grid-group-footer-second-cell-border: 1px !default;
+    $grid-header-first-border: 1px !default;
+    $grid-header-menu-icon-spacing: $icon-spacing !default;
+    $grid-sorted-icon-spacing: add-two($padding-x, -1px) !default;
+
+    // helper variables
+    $grid-filterable-icon-spacing: calc(#{ button-size() } + #{ $grid-header-menu-icon-spacing });
+    $default-scrollbar-width: 17px;
+
+    .k-grid {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &.k-display-block {
+            display: block;
+        }
+
+        .k-grid-container {
+            display: flex;
+            flex: 1 1 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .k-grid-aria-root {
+            border-color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+
+        table {
+            margin: 0;
+            width: 100%;
+            max-width: none;
+            border-width: 0;
+            border-color: inherit;
+            border-collapse: separate;
+            border-spacing: 0;
+            empty-cells: show;
+            outline: 0;
+        }
+        thead,
+        tbody,
+        tfoot {
+            text-align: left;
+            border-color: inherit;
+        }
+        tr {
+            border-color: inherit;
+        }
+        th,
+        td {
+            padding: $grid-cell-padding-y $grid-cell-padding-x;
+            border-style: solid;
+            border-color: inherit;
+            outline: 0;
+            font-weight: inherit;
+            text-align: inherit;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:first-child {
+                border-left-width: 0;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+        th {
+            padding: $grid-header-cell-padding-y $grid-cell-padding-x;
+            border-width: 0 0 1px $grid-cell-vertical-border-width;
+            white-space: nowrap;
+        }
+        td {
+            border-width: 0 0 $grid-cell-horizontal-border-width $grid-cell-vertical-border-width;
+            vertical-align: middle;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+
+        table,
+        .k-grid-header-wrap {
+            box-sizing: content-box;
+        }
+
+        // Grouping and hierarcy
+        .k-group-col,
+        .k-hierarchy-col {
+            padding: 0;
+            width: $grid-hierarchy-col-width;
+        }
+
+        .k-grouping-row p {
+            display: flex;
+            align-items: center;
+            align-content: center;
+        }
+        .k-grouping-row td {
+            overflow: visible;
+        }
+        .k-grouping-row + tr td {
+            border-top-width: $grid-grouping-row-border-top;
+        }
+        .k-grouping-row .k-group-cell,
+        .k-grouping-row + tr .k-group-cell {
+            border-top-width: 0;
+            text-overflow: none;
+        }
+
+        .k-grouping-row .k-icon {
+            margin-left: add-two(-1 * $cell-padding-x, $icon-size / 2);
+            margin-right: $icon-size / 2;
+        }
+
+        .k-group-footer td {
+            border-style: solid;
+            border-width: $grid-group-footer-border-y 0;
+        }
+        .k-group-footer .k-group-cell + td {
+            border-left-width: $grid-group-footer-second-cell-border;
+        }
+
+        .k-hierarchy-cell {
+            text-align: center;
+            padding: 0;
+            overflow: visible;
+
+            > .k-icon {
+                padding: $cell-padding-y 0;
+                width: 100%;
+                height: 100%;
+                line-height: $line-height;
+                display: inline-block;
+                outline: 0;
+            }
+        }
+        .k-hierarchy-cell + td {
+            border-left-width: 0;
+        }
+        .k-detail-cell {}
+        .k-master-row {}
+        .k-detail-row {}
+
+        &[dir = "rtl"],
+        .k-rtl & {
+            thead,
+            tbody,
+            tfoot {
+                text-align: right;
+            }
+
+            th {
+                white-space: nowrap;
+            }
+
+            .k-grid-header-wrap {
+                border-width: 0 0 0 $grid-cell-vertical-border-width;
+            }
+
+            .k-group-indicator,
+            .k-drag-clue {
+                .k-button.k-bare {
+                    margin-left: -( $icon-spacing / 2 );
+                    margin-right: ( 2 * $icon-spacing );
+                }
+
+                .k-link .k-icon {
+                    margin-left: $icon-spacing;
+                    margin-right: -( $icon-spacing / 2);
+                }
+            }
+            .k-group-indicator {
+                margin-right: 0;
+                margin-left: ( $grid-group-indicator-gap / 2 );
+            }
+
+            .k-group-indicator + .k-group-indicator {
+                margin-right: ( $grid-group-indicator-gap / 2 );
+            }
+
+            .k-grid-content-locked,
+            .k-grid-footer-locked,
+            .k-grid-header-locked {
+                border-left-width: $grid-cell-vertical-border-width;
+                border-right-width: 0;
+            }
+
+            th,
+            td {
+                &:first-child {
+                    border-left-width: $grid-cell-vertical-border-width;
+                }
+
+                &:last-child {
+                    border-left-width: 0;
+                }
+
+            }
+
+            td.k-hierarchy-cell {
+                border-left-width: 0;
+            }
+            .k-hierarchy-cell + td:not(:last-child) {
+                border-left-width: $grid-cell-vertical-border-width;
+            }
+
+            .k-grid-header,
+            .k-grid-footer {
+                padding-left: $default-scrollbar-width;
+                padding-right: 0;
+            }
+
+            .k-grid-header {
+                .k-header {
+                    &:first-child {
+                        border-right-width: 0;
+                    }
+                }
+
+                .k-with-icon > .k-link,
+                .k-filterable > .k-link {
+                    padding-left: $grid-filterable-icon-spacing;
+                    padding-right: $grid-cell-padding-x;
+                }
+
+                .k-grid-filter,
+                .k-header-column-menu {
+                    right: auto;
+                    left: $grid-header-menu-icon-spacing;
+                }
+            }
+
+            .k-filter-row td {
+                &:first-child {
+                    border-left-width: $grid-cell-vertical-border-width;
+                }
+
+                &:last-child {
+                    border-left-width: 0;
+                }
+            }
+
+            .k-filtercell-operator {
+                margin-left: 0;
+                margin-right: $cell-padding-y / 2;
+            }
+
+            .k-dirty {
+                left: auto;
+                right: 0;
+            }
+
+            .k-edit-cell,
+            .k-grid-edit-row > td {
+                >.k-textbox,
+                >.k-widget,
+                > .text-box {
+                    margin-right: $edit-cell-input-space;
+                }
+            }
+
+            .k-grid-header-wrap.k-auto-scrollable {
+                margin-left: -1px;
+                margin-right: 0;
+            }
+
+            .k-grid-header-locked + .k-grid-header-wrap.k-auto-scrollable {
+                margin-left: 0;
+            }
+        }
+
+        .k-tooltip.k-tooltip-validation {
+            display: flex;
+            position: absolute;
+            width: auto;
+            padding: $padding-y $padding-x;
+
+            .k-callout {
+                display: block;
+            }
+        }
+
+        .k-animation-container-fixed .k-tooltip.k-tooltip-validation {
+            position: static;
+        }
+
+        .k-dirty-cell {
+            position: relative;
+        }
+
+        .k-dirty {
+            border-width: 5px;
+            left: 0;
+            right: auto;
+        }
+
+        .k-grid-content-locked + .k-grid-content {
+            box-sizing: content-box;
+        }
+    }
+
+    // Toolbar
+    .k-grid-toolbar {
+        padding: $cell-padding-y;
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: inherit;
+        text-overflow: clip;
+        cursor: default;
+        display: block;
+
+        .k-button {
+            vertical-align: middle;
+        }
+        .k-button + .k-button {
+            margin-left: ($cell-padding / 2);
+        }
+    }
+
+
+    // Grouping header
+    .k-grouping-header {
+        display: block;
+        padding: $grid-grouping-header-padding-y $grid-grouping-header-padding-x;
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: inherit;
+        line-height: button-size();
+    }
+
+    .k-grouping-header-flex {
+        display: flex;
+        flex-shrink: 0;
+        // use item margin instead of padding, in order to position the reorder clue correctly
+        padding: 0;
+
+        > .k-indicator-container {
+            display: inline-flex;
+            margin: 0;
+            padding: $grid-grouping-header-padding-y 0 $grid-grouping-header-padding-y $grid-grouping-header-padding-x;
+
+            &:last-child {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .k-group-indicator,
+    .k-drag-clue {
+        @include border-radius( $grid-group-indicator-border-radius );
+        margin: 0;
+        padding: $button-padding-y $button-padding-x;
+        border-width: 1px;
+        border-style: solid;
+        line-height: $form-line-height;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        vertical-align: top;
+        box-sizing: content-box;
+
+        .k-link,
+        .k-button.k-bare {
+            padding: 0;
+            border-width: 0;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .k-link .k-icon {
+            margin-left: -( $icon-spacing / 2);
+            margin-right: $icon-spacing;
+        }
+
+        .k-button.k-bare {
+            margin-left: ( 2 * $icon-spacing );
+            margin-right: -( $icon-spacing / 2 );
+            padding: 0;
+            width: auto;
+            height: auto;
+            opacity: .5;
+
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .k-group-indicator {
+        margin-right: ( $grid-group-indicator-gap / 2 );
+    }
+
+    .k-group-indicator + .k-group-indicator {
+        margin-left: ( $grid-group-indicator-gap / 2 );
+    }
+
+    .k-grouping-dropclue {
+        width: ($grid-group-dropclue-size * 2);
+        height: button-size();
+        position: absolute;
+        box-sizing: content-box;
+
+        &::before,
+        &::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+        }
+
+        &::before {
+            border-width: $grid-group-dropclue-size;
+            border-style: solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            top: 0;
+        }
+
+        &::after {
+            width: $grid-group-dropclue-line-size;
+            height: calc(100% - #{$grid-group-dropclue-size});
+            top: $grid-group-dropclue-size;
+            left: calc(#{$grid-group-dropclue-size} - (#{$grid-group-dropclue-line-size} / 2));
+        }
+    }
+
+
+    // Grid header / footer
+    .k-grid-header-wrap,
+    .k-grid-footer-wrap {
+        width: 100%;
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        border-color: inherit;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .k-grid-header-wrap.k-auto-scrollable {
+        margin-right: -1px;
+    }
+
+    .k-grid-header-locked + .k-grid-header-wrap.k-auto-scrollable {
+        margin-right: 0;
+
+        .k-ie & {
+            display: inline-block;
+        }
+    }
+
+    .k-grid-header,
+    .k-grid-footer {
+        flex: 0 0 auto;
+        padding-right: $default-scrollbar-width;
+        border-width: 0;
+        border-style: solid;
+        border-color: inherit;
+
+        table {
+            table-layout: fixed;
+        }
+    }
+
+    div.k-grid-header,
+    div.k-grid-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .k-ie div.k-grid-header {
+        display: block;
+    }
+
+    .k-grid-header {
+        border-bottom-width: 1px;
+
+        table {
+            margin-bottom: -1px;
+        }
+
+        .k-header {
+            position: relative;
+            vertical-align: bottom;
+
+            &:first-child {
+                border-left-width: 0;
+            }
+
+            &.k-first {
+                border-left-width: $grid-header-first-border;
+            }
+        }
+
+        .k-header > .k-link {
+            margin: (-$grid-header-cell-padding-y) (-$grid-cell-padding-x);
+            padding: $grid-header-cell-padding-y $grid-cell-padding-x;
+            line-height: inherit;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .k-with-icon > .k-link,
+        .k-filterable > .k-link {
+            padding-right: $grid-filterable-icon-spacing;
+        }
+
+        .k-header > .k-link:focus {
+            text-decoration: none;
+        }
+
+        .k-grid-filter,
+        .k-header-column-menu {
+            padding: $button-padding-y;
+            width: button-size();
+            height: button-size();
+            box-sizing: border-box;
+            outline: 0;
+            line-height: $form-line-height;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            position: absolute;
+            right: $grid-header-menu-icon-spacing;
+            bottom: calc( #{ $grid-header-cell-padding-y } + #{ $line-height-em / 2 } + (-1 * #{ button-inner-size(.5) } ) );
+            z-index: 1;
+        }
+
+        .k-header > .k-link > .k-icon {
+            &.k-i-sort-desc-sm,
+            &.k-i-sort-asc-sm {
+                vertical-align: text-top;
+                margin-left: $grid-sorted-icon-spacing;
+            }
+        }
+
+        .k-sort-order {
+            display: inline-block;
+            font-size: $font-size-sm;
+            height: $icon-size;
+            margin-left: -$icon-spacing;
+            vertical-align: top;
+            margin-top: 2px;
+        }
+    }
+
+    .k-grid-footer {
+        border-width: 1px 0 0;
+
+        td {
+            height: $line-height-em;
+        }
+    }
+
+    .k-grid-filter-popup {
+        min-width: 200px;
+    }
+
+    .k-grid-columnmenu-popup {
+        width: 230px;
+    }
+
+    // Filter row
+    .k-filter-row {
+        line-height: $form-line-height;
+
+        td,
+        th {
+            border-width: 0 0 1px $grid-cell-vertical-border-width;
+            white-space: nowrap;
+            padding: $grid-filter-cell-padding-y $grid-filter-cell-padding-x;
+        }
+
+        td:first-child {
+            border-left-width: 0;
+        }
+
+        .k-multiselect {
+            height: auto;
+        }
+
+        .k-filtercell .k-widget.k-sized-input {
+            flex: 0 1 auto;
+        }
+    }
+
+    .k-filtercell {
+        width: auto;
+        display: flex;
+
+        > span,
+        .k-filtercell-wrapper {
+            display: flex;
+            flex: 1 1 0;
+
+            > label {
+                vertical-align: middle;
+            }
+        }
+
+        .k-filtercell-wrapper > .k-widget {
+            width: 100%;
+        }
+
+        > span {
+            .k-button {
+                visibility: visible;
+                pointer-events: all;
+            }
+
+            .k-button,
+            .k-dropdown-operator {
+                margin-left: $grid-cell-padding-y / 2;
+            }
+
+            .k-numerictextbox {
+                width: auto;
+            }
+        }
+
+        .k-filtercell-operator {
+            > .k-button.k-clear-button-visible {
+                visibility: visible;
+                height: button-size();
+            }
+
+            > .k-button:not(.k-clear-button-visible) {
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
+        .k-filtercell-operator {
+            margin-left: $grid-cell-padding-y / 2;
+        }
+
+        .k-widget:not(.k-dropdown-operator),
+        .k-filtercell-wrapper > .k-textbox {
+            display: flex;
+            flex: 1 1 auto;
+        }
+
+        .k-filtercell-wrapper > .k-textbox {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .k-autocomplete .k-input,
+        .k-dropdown-wrap .k-input,
+        .k-numeric-wrap .k-input,
+        .k-picker-wrap .k-input,
+        .k-selectbox .k-input,
+        .k-textbox > input {
+            padding-left: 0;
+            padding-right: 0;
+            text-indent: $grid-filter-input-text-indent;
+        }
+    }
+
+    // Grid content
+    .k-grid-content,
+    .k-grid-content-locked {
+        border-color: inherit;
+
+        table {
+            table-layout: fixed;
+        }
+        tr:last-child td {
+            border-bottom-width: 0;
+        }
+    }
+    .k-grid-content {
+        width: 100%;
+        min-height: 0;
+        overflow: auto;
+        overflow-x: auto;
+        overflow-y: scroll;
+        position: relative;
+        flex: 1;
+
+        .k-button {
+            vertical-align: middle;
+            margin: 0 .16em;
+        }
+
+    }
+
+    // Virtualization
+    .k-virtual-scrollable-wrap {
+        height: 100%;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+
+    // Edit row
+    .k-grid-edit-row {
+
+        td {
+            text-overflow: clip;
+        }
+
+        .k-widget,
+        .k-button,
+        .k-textbox,
+        .k-input.k-textbox {
+            height: auto;
+            // Commented out pending a better approach
+            //     margin-top: -$input-padding-y;
+            //     margin-bottom: -$input-padding-y;
+        }
+
+        .k-edit-cell {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .k-dirty-cell {
+            overflow: visible;
+        }
+    }
+
+    .k-edit-cell,
+    .k-grid-edit-row > td {
+        >.k-textbox,
+        >.k-widget,
+        > .text-box {
+            margin-left: $edit-cell-input-space;
+        }
+    }
+
+    .k-grid-edit-row td > .k-textbox,
+    .k-grid-edit-row td > .k-widget,
+    .k-edit-cell > .k-textbox,
+    .k-edit-cell > .k-widget {
+        width: $edit-cell-textbox-width;
+    }
+
+    .k-grid-edit-row td > .k-textbox,
+    .k-grid-edit-row td > .k-widget,
+    .k-command-cell > .k-button,
+    .k-edit-cell > .k-textbox,
+    .k-edit-cell > .k-widget {
+        margin-top: $grid-form-component-offset;
+        margin-bottom: $grid-form-component-offset;
+        vertical-align: $grid-form-component-vertical-align;
+    }
+
+    // Resize handle
+    .k-grid > .k-resize-handle,
+    .k-grid-header .k-resize-handle {
+        height: 25px;
+        cursor: col-resize;
+        position: absolute;
+        z-index: 2;
+    }
+
+
+    // Pager
+    .k-grid-pager {
+        padding: $grid-cell-padding-y;
+        border-width: 1px 0 0;
+        border-color: inherit;
+    }
+
+    .k-grid-virtual .k-grid-content {
+        .k-grid-table-wrap {
+            float: left;
+            width: 100%;
+        }
+
+        .k-grid-table {
+            position: relative;
+            float: left;
+            z-index: 1;
+        }
+
+        > .k-height-container {
+            position: relative;
+            float: left;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+
+    .k-grid-add-row td {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+
+
+    /* Locked columns */
+    .k-grid-lockedcolumns {
+        white-space: nowrap;
+    }
+
+    .k-grid-content,
+    .k-grid-content-locked,
+    .k-pager-wrap {
+        white-space: normal;
+    }
+
+    .k-grid-content-locked,
+    .k-grid-footer-locked,
+    .k-grid-header-locked {
+        flex: 0 0 auto;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+        position: relative;
+        border-style: solid;
+        border-width: 0 1px 0 0;
+
+        & + .k-grid-content.k-auto-scrollable {
+            display: inline-block;
+        }
+    }
+
+    .k-grid-content,
+    .k-grid-footer-wrap,
+    .k-grid-header-wrap {
+        flex: 1 1 auto;
+        display: inline-block;
+        vertical-align: top;
+
+        &.k-auto-scrollable {
+            display: block;
+        }
+    }
+
+    .k-grid-header-locked>table,
+    .k-grid-header-wrap>table {
+        margin-bottom: -1px;
+    }
+
+    .k-header.k-drag-clue {
+        overflow: hidden;
+    }
+
+    .k-grid.k-grid-no-scrollbar {
+        .k-grid-header {
+            padding: 0;
+        }
+
+        .k-grid-header-wrap {
+            border-width: 0;
+        }
+
+        .k-grid-content {
+            overflow-y: auto;
+        }
+    }
+}
+
+@include exports( "grid/pdf-export" ) {
+    // PDF export
+    .k-loading-pdf-mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+        > .k-i-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 64px;
+        }
+
+        .k-loading-pdf-progress {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+    }
+
+    .k-grid-pdf-export-element {
+        position: absolute;
+        left: -10000px;
+        top: -10000px;
+
+        .k-filter-row {
+            display: none;
+        }
+    }
+}
+
+@include exports( "filtermenu/layout" ) {
+
+    .k-filter-menu {
+        $item-spacing: $spacer-y / 2;
+        $form-padding: $spacer-y;
+        $form-padding-y: $form-padding - $item-spacing;
+
+        // BACKCOMPAT styles can be removed once https://github.com/telerik/kendo/pull/8527 is merged
+
+        > div:not(.k-animation-container), // BACKCOMPAT: remove when below class is added to container
+        .k-filter-menu-container {
+            padding: $form-padding-y $form-padding;
+        }
+
+        > div > div > .k-button {
+            // BACKCOMPAT: remove when buttons div gets .k-action-buttons.k-button-group
+            margin: $item-spacing 1% 0;
+            width: 48%;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+
+        .k-widget,
+        .k-radio-list,
+        .k-textbox {
+            margin: $item-spacing 0;
+            width: 100%;
+            display: block;
+        }
+
+        .k-widget.k-filter-and {
+            width: 6em;
+            margin: (2 * $item-spacing) 0;
+        }
+
+        .k-action-buttons {
+            margin: $form-padding (-$form-padding) (-$form-padding-y);
+
+            .k-button {
+                // BACKCOMPAT: remove these overrides when buttons div gets .k-action-buttons.k-button-group
+                margin: 0;
+                width: auto;
+            }
+        }
+    }
+
+    .k-multicheck-wrap {
+        max-height: 300px;
+        overflow: auto;
+        overflow-x: hidden;
+        white-space: nowrap;
+
+        .k-item {}
+        .k-item + .k-item {
+            margin-top: ($spacer-y / 2);
+        }
+
+        .k-label {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            input {
+                margin: 0 ($spacer-y / 4);
+            }
+        }
+    }
+    .k-filter-selected-items {
+        font-weight: bold;
+        line-height: normal;
+        white-space: nowrap;
+        margin: $spacer-y 0 ($spacer / 2);
+    }
+
+    // autofitting requires automatic table layout to measure sizes
+    .k-autofitting {
+        // sass-lint:disable-block no-important
+
+        width: auto !important;
+        table-layout: auto !important;
+
+        th.k-header,
+        td {
+            white-space: nowrap !important;
+        }
+
+        .k-detail-row {
+            display: none !important;
+        }
+    }
+
+}
+
+@include exports('columnmenu/layout') {
+    .k-column-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 200px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .k-column-chooser-title,
+    .k-column-list-item {
+        padding: $list-item-padding-y $list-item-padding-x;
+        padding-right: add-two( (2 * $list-item-padding-x), $icon-size);
+    }
+
+    .k-column-list-item {
+        display: block;
+        margin: 0;
+        cursor: pointer;
+
+        .k-checkbox,
+        .k-checkbox-label {
+            vertical-align: middle;
+        }
+    }
+
+    .k-columnmenu-item {
+        padding: $nav-item-padding-y $nav-item-padding-x;
+        cursor: pointer;
+
+        > .k-icon {
+            margin-right: $icon-spacing;
+        }
+    }
+
+    .k-columnmenu-item-wrapper {
+        border-bottom: 1px solid;
+        border-bottom-color: inherit;
+
+        &:last-child {
+            border-bottom-width: 0;
+        }
+    }
+
+    .k-columnmenu-item-content {
+        overflow: hidden;
+
+        .k-column-list-item {
+            padding-left: add-three($nav-item-padding-x, $icon-size, $icon-spacing);
+        }
+
+        .k-filter-menu .k-filter-menu-container {
+            padding: $spacer-y $spacer-x;
+
+            .k-columnmenu-actions {
+                padding: $spacer-y 0 0;
+            }
+        }
+
+        .k-columnmenu-actions {
+            display: flex;
+            padding: $spacer-y $spacer-x;
+
+            .k-button {
+                flex: 1 0 auto;
+                width: auto;
+                margin: 0 ( $spacer-x / 2 );
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@include exports("notification/layout") {
+
+    $alert-padding-y: 1em !default;
+    $alert-padding-x: 1em !default;
+
+    // Base
+    .k-notification {
+        padding: 0;
+        @include border-radius();
+    }
+    .k-notification-wrap {
+        font-size: $font-size-sm;
+        padding: $alert-padding-y calc(#{$alert-padding-x} + #{$icon-size} + #{$icon-spacing}) $alert-padding-y $alert-padding-x;
+        white-space: nowrap;
+        cursor: default;
+        position: relative;
+        line-height: $line-height-em;
+
+        > .k-icon {
+            margin-right: $padding-x;
+            vertical-align: middle;
+        }
+
+        > .k-i-close {
+            margin: 0;
+            position: absolute;
+            top: $alert-padding-y;
+            right: $alert-padding-x;
+            font-size: inherit;
+            line-height: inherit;
+
+            &::before {
+                font-size: $icon-size;
+            }
+        }
+    }
+
+    .k-rtl .k-notification-wrap {
+        padding: $alert-padding-y $alert-padding-x $alert-padding-y calc(#{$alert-padding-x} + #{$icon-size} + #{$icon-spacing});
+
+        > .k-icon {
+            margin-right: 0;
+            margin-left: $padding-x;
+        }
+
+        > .k-i-close {
+            margin: 0;
+            right: auto;
+            left: $alert-padding-x;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<!--Paging dataTable starts-->
+<section id="paging" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Paging</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ngx-datatable class="bootstrap" [rows]="rows" [columns]="[{name:'Name'},{name:'Gender'},{name:'Company'}]" [columnMode]="'force'"
+                [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
+<!--Paging dataTable starts-->

@@ -1,0 +1,88 @@
+@include exports("window/layout") {
+
+    $window-titlebar-border-width: 0 0 1px !default;
+    $window-titlebar-border-style: solid !default;
+    $window-title-line-height: 1.3em !default;
+
+    .k-window {
+        padding: 0;
+        border-width: 1px;
+        border-style: solid;
+        display: inline-flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 10002;
+
+        // overlay during dragging
+        .k-overlay {
+            position: absolute;
+            opacity: 0;
+        }
+    }
+    .k-window.k-window-maximized {
+        max-width: 100vw;
+        max-height: 100vh;
+        box-shadow: none;
+    }
+
+    // Title bar
+    .k-window-titlebar {
+        padding: $window-titlebar-padding-y $window-titlebar-padding-x;
+        border-width: $window-titlebar-border-width;
+        border-style: $window-titlebar-border-style;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    // Title bar title text
+    .k-window-title {
+        margin: -0.15em 0;
+        font-size: $font-size-lg;
+        line-height: $window-title-line-height;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        cursor: default;
+        flex: 1;
+    }
+
+
+    // Actions
+    .k-window-actions {
+        margin: add-two(-$button-padding-y, -$button-border-width);
+        line-height: 1;
+        display: flex;
+        flex-direction: row;
+        flex-shrink: 0;
+        align-items: center;
+        vertical-align: top;
+    }
+
+
+    // Content
+    .k-window-content,
+    .k-prompt-container {
+        padding: $window-inner-padding-y $window-inner-padding-x;
+        outline: 0;
+        overflow: auto;
+        position: relative;
+        flex: 1 1 auto;
+    }
+    .k-window-content + .k-prompt-container {
+        margin-top: -($window-inner-padding-y / 2);
+    }
+
+    .k-window-iframecontent {
+        padding: 0;
+        overflow: visible;
+
+        .k-content-frame {
+            vertical-align: top;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

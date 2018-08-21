@@ -1,0 +1,250 @@
+<div class="email-application">
+    <div class="content-overlay"></div>
+    <div class="email-app-sidebar float-left d-none d-xl-block">
+        <div class="email-app-sidebar-content">
+            <div class="email-app-menu">
+                <div class="form-group form-group-compose text-center">
+                    <button type="button" class="btn btn-raised btn-danger btn-block my-2" (click)="open(content)">
+                        <i class="ft-mail"></i> Compose</button>
+                </div>
+                <h6 class="text-muted text-bold-500 mb-1">Messages</h6>
+                <div class="list-group list-group-messages">
+                    <a class="list-group-item active no-border" (click)="GetEmailsByType($event, 'Inbox')">
+                        <i class="ft-inbox mr-1"></i> Inbox
+                        <span class="badge badge-dark badge-pill float-right">8</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByType($event, 'Sent')">
+                        <i class="fa fa-paper-plane-o mr-1"></i> Sent</a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByType($event, 'Work')">
+                        <i class="ft-file mr-1"></i> Draft</a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetStarredEmails($event)">
+                        <i class="ft-star mr-1"></i> Starred
+                        <span class="badge badge-danger badge-pill float-right">3</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByType($event, 'Trash')">
+                        <i class="ft-trash-2 mr-1"></i> Trash</a>
+                </div>
+                <h6 class="text-muted text-bold-500 mt-1 mb-1">Labels</h6>
+                <div class="list-group list-group-messages">
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByLabel($event, 'Work')">
+                        <i class="ft-circle mr-1 warning"></i> Work
+                        <span class="badge badge-warning badge-pill float-right">5</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByLabel($event, 'Family')">
+                        <i class="ft-circle mr-1 danger"></i> Family</a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByLabel($event, 'Friends')">
+                        <i class="ft-circle mr-1 primary"></i> Friends</a>
+                    <a class="list-group-item list-group-item-action no-border" (click)="GetEmailsByLabel($event, 'Private')">
+                        <i class="ft-circle mr-1 success"></i> Private
+                        <span class="badge badge-success badge-pill float-right">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="email-app-content row">
+        <div class="email-search-box w-100 bg-white p-2">
+            <div class="media">
+                <span class="email-app-sidebar-toggle ft-align-justify font-large-1 mr-2 d-xl-none"></span>
+                <div class="media-body">
+                    <input type="text" class="form-control round" placeholder="search for emails">
+                </div>
+            </div>
+        </div>
+        <div class="email-app-content-area w-100">
+            <div class="email-app-list-mails p-0">
+                <div class="email-app-list">
+                    <div id="users-list">
+                        <div class="list-group">
+                            <div class="users-list-padding">
+                                <a [ngClass]="!mail.isDefault ? 'list-group-item list-group-item-action no-border' : 'list-group-item list-group-item-action bg-blue-grey bg-lighten-5 border-right-primary border-right-2'"  *ngFor="let mail of mail" (click)="DisplayMessage($event, [mail.mailId])">
+                                    <span class="media">
+                                        <span class="avatar avatar-md mr-2">
+                                            <span *ngIf="!mail.hasImage" class="media-object rounded-circle text-circle d-flex mr-2 justify-content-center align-items-center + ' ' + {{mail.imageClass}}">{{ mail.imageText }}</span>
+                                            <img *ngIf="mail.hasImage" class="media-object rounded-circle" [src]="mail.imagePath" alt="Generic placeholder image">
+                                        </span>
+                                        <div class="media-body">
+                                            <h6 [ngClass]="mail.isRead === false ? 'list-group-item-heading text-bold-400' : 'list-group-item-heading' ">{{ mail.mailFrom }}
+                                                <span class="float-right">
+                                                    <i class="fa-paperclip fa" *ngIf="mail.hasAttachment"></i>
+                                                    <span [ngClass]="mail.isRead === false ? 'font-small-2 primary' : 'font-small-2 float-right'">{{ mail.time }}</span>
+                                                </span>
+                                            </h6>
+                                            <p [ngClass]="mail.isRead === false ? 'list-group-item-text text-truncate text-bold-500' : 'list-group-item-text text-truncate' ">{{ mail.subject }}</p>
+                                            <p class="list-group-item-text">{{ mail.body }}
+                                                <span class="float-right primary" *ngIf="mail.hasLabel">
+                                                    <span class="badge mr-1 + ' ' + {{mail.labelClass}}">{{ mail.labelType }}</span>
+                                                    <i [ngClass]="mail.isImportant === false ? 'font-medium-1 ft-star blue-grey lighten-3' : 'font-medium-1 ft-star warning'"></i>
+                                                </span>
+                                                <span class="float-right primary" *ngIf="!mail.hasLabel">
+                                                    <i class="font-medium-1 ft-star blue-grey lighten-3"></i>
+                                                </span>
+                                            </p>
+
+                                        </div>
+                                    </span>
+                                </a>
+                                <p class="primary text-center" *ngIf="mail.length === 0">There are no messages!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="email-app-mail-content">
+                <div class="email-app-mail-content-detail" *ngIf="isMessageSelected">
+                    <div class="email-app-options card-block">
+                        <div class="row d-md-none">
+                            <button class="btn btn-raised btn-primary ml-2 back-to-inbox">
+                                <i class="fa fa-angle-left"></i> Back to inbox</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Replay">
+                                        <i class="fa fa-reply"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Replay All">
+                                        <i class="fa fa-reply-all"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Report SPAM">
+                                        <i class="ft-alert-octagon"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
+                                        <i class="ft-trash-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-12 text-right">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Previous">
+                                        <i class="fa fa-angle-left"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-group ml-1">
+                                    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+                                        <button class="btn btn-sm btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>More</button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                            <button class="dropdown-item">Mark as unread</button>
+                                            <button class="dropdown-item">Mark as unimportant</button>
+                                            <button class="dropdown-item">Add star</button>
+                                            <button class="dropdown-item">Add to task</button>
+                                            <div class="dropdown-divider"></div>
+                                            <button class="dropdown-item">Filter mail</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="email-app-title card-block">
+                        <h3 class="list-group-item-heading">{{message.subject}}</h3>
+                        <p class="list-group-item-text">
+                            <span class="primary">
+                                <span class="badge badge-primary">Previous</span>
+                                <i class="float-right font-medium-3 ft-star warning"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div *ngFor="let messageDetail of message.messages">
+
+                        <div id="headingCollapse2" class="card-header p-0">
+                            <a (click)="messageDetail.collapsed = !messageDetail.collapsed" [attr.aria-expanded]="!messageDetail.collapsed" [attr.aria-controls]="messageDetail.messageId">
+                                <div class="email-app-sender list-group-item list-group-item-action no-border">
+                                    <div class="media">
+                                        <span class="avatar avatar-md mr-2">
+                                            <span *ngIf="!messageDetail.hasAvatar" class="media-object rounded-circle text-circle d-flex mr-2 justify-content-center align-items-center + ' ' + {{messageDetail.avatarClass}}">{{ messageDetail.avatarText }}</span>
+                                            <img *ngIf="messageDetail.hasAvatar" class="media-object rounded-circle" [src]="messageDetail.avatarPath" alt="Generic placeholder image">
+                                        </span>
+                                        <div class="media-body">
+                                            <h6 class="list-group-item-heading">{{messageDetail.mailFrom}}</h6>
+                                            <p class="list-group-item-text">to {{messageDetail.mailTo}}
+                                                <span class="primary">{{messageDetail.time}}</span>
+                                                <span class="float-right">
+                                                    <i class="fa fa-reply mr-1"></i>
+                                                    <i class="fa fa-arrow-right mr-1"></i>
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </span>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div [id]="messageDetail.messageId" [ngbCollapse]="messageDetail.collapsed">
+                            <div class="card-body">
+                                <div class="email-app-text card-block">
+                                    <div class="email-app-message">
+                                        <div [innerHTML]="messageDetail.body">
+                                        </div>
+                                        <div *ngIf="messageDetail.hasAttachment">
+                                            <p class="primary">Attachments:</p>
+                                            <div *ngFor="let attachment of messageDetail.attachments" class="float-left mr-2">
+                                                <img class="media-object width-100" [src]="attachment.url" alt="Generic placeholder image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="email-app-text-action card-block">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="email-app-mail-content-detail" *ngIf="!isMessageSelected">
+                    <p class="primary text-center">Select a message to read</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header px-4">
+            <h4 class="modal-title">Compose Email</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body px-4">
+            <form role="form" class="form form-horizontal">
+                <div class="form-group row">
+                    <label class="col-md-2 label-control" for="emailTo">To </label>
+                    <div class="col-md-10">
+                        <input type="text" id="emailTo" class="form-control" name="emailTo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 label-control" for="emailCC">Cc / Bcc </label>
+                    <div class="col-md-10">
+                        <input type="text" id="emailCC" class="form-control" name="emailCC">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 label-control" for="emailSubject">Subject </label>
+                    <div class="col-md-10">
+                        <input type="text" id="emailSubject" class="form-control" name="emailSubject">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 label-control">Message</label>
+                    <div class="col-md-10">
+                        <quill-editor [style]="{height: '200px'}"></quill-editor>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer px-4">
+            <i class="fa-paperclip fa font-large-1 mr-3"></i>
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancel</button>
+            <button type="button" class="btn btn-raised btn-danger" (click)="c('Close click')">Save as Draft</button>
+            <button type="button" class="btn btn-raised btn-primary" (click)="c('Close click')">Send</button>
+        </div>
+    </ng-template>
+</div>

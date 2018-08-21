@@ -1,0 +1,90 @@
+{
+  "contacts": [{
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "contactType": [1, 2],
+      "email": "jdoe@company.com",
+      "phone": [{
+          "phoneNumber": "2132334444",
+          "phoneType": 1
+        },
+        {
+          "phoneNumber": "2133454444",
+          "phoneType": 2
+        },
+        {
+          "phoneNumber": "2138884444",
+          "phoneType": 3
+        }
+      ],
+      "address": [{
+          "addressDescription": "home",
+          "address1": "123 Main Street",
+          "address2": "PH2",
+          "city": "Baltimore",
+          "state": "MD",
+          "postalCode": "20707",
+          "country": 25
+        },
+        {
+          "addressDescription": "office",
+          "address1": "123 Broad Street",
+          "address2": "Suite 2100",
+          "city": "Baltimore",
+          "state": "MD",
+          "postalCode": "20707",
+          "country": 25
+        }
+      ],
+      "birthdate": "November, 4, 1960",
+      "company": "Morgan Industries",
+      "jobTitle": "Sr VP of Human Resources",
+      "notes": "Just thought I would leave some notes for you to test"
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "contactType": [3, 4],
+      "email": "jdoe@corporation.com",
+      "phone": [{
+          "phoneNumber": "2142334444",
+          "phoneType": 1
+        },
+        {
+          "phoneNumber": "2143454444",
+          "phoneType": 2
+        },
+        {
+          "phoneNumber": "2148884444",
+          "phoneType": 3
+        }
+      ],
+      "address": [{
+          "addressDescription": "home",
+          "address1": "123 Main Street",
+          "address2": "PH2",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75238",
+          "country": 25
+        },
+        {
+          "addressDescription": "office",
+          "address1": "123 Broad Street",
+          "address2": "Suite 4545",
+          "city": "Dallas",
+          "state": "TX",
+          "postalCode": "75043",
+          "country": 25
+        }
+      ],
+      "birthdate": "August, 16, 1970",
+      "company": "Toyota Corp",
+      "jobTitle": "In House Counsel",
+      "notes": "Just thought I would leave some notes for you to test"
+
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "CaseManagement-e2e": {
+      "root": "",
+      "prefix": "cm",
+      "sourceRoot": "e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "CaseManagement:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "CaseManagement": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "progress": true,
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "src/assets/css/prism.min.css",
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "src/assets/css/wizard.css",
+              "src/assets/css/quill.snow.css",
+              "src/assets/css/quill.bubble.css",
+              "src/assets/css/hopscotch.css",
+              "node_modules/nouislider/distribute/nouislider.min.css",
+              "node_modules/angular-calendar/scss/angular-calendar.scss",
+              "node_modules/dragula/dist/dragula.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/videogular2/fonts/videogular.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "src/assets/css/ng2-select.css",
+              "src/assets/css/demo.css",
+              "src/assets/sass/app.scss",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/vendor/pace/pace.min.js",
+              "src/assets/js/perfect-scrollbar.jquery.min.js",
+              "src/assets/js/jquery.steps.min.js",
+              "src/assets/js/wizard-steps.js"
+
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "CaseManagement:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "CaseManagement:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "CaseManagement:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "assets": [
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "CaseManagement",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "css"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
+}

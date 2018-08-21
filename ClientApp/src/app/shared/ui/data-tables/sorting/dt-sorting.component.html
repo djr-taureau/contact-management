@@ -1,0 +1,28 @@
+<!--Sorting DataTable Starts-->
+<section id="sorting" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Sorting DataTable</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ngx-datatable class="bootstrap" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50"
+                [scrollbarV]="true" [sorts]="[{prop: 'name', dir: 'desc'}]">
+                <ngx-datatable-column name="Company">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.company}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Name">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.name}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Gender">
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
+<!--Sorting DataTable Ends-->

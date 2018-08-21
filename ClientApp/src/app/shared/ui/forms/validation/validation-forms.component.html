@@ -1,0 +1,276 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">Form Validation</div>
+    </div>
+</div>
+<!-- Reactive Form Validaton Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Regular Form (Reactive Form)</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <form [formGroup]="regularForm" (ngSubmit)="onReactiveFormSubmit()" novalidate>
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+
+                            <input type="email" class="form-control" id="inputEmail" formControlName="inputEmail" required>
+                            <small class="form-text text-muted danger" *ngIf="!regularForm.get('inputEmail').valid && (regularForm.get('inputEmail').dirty || regularForm.get('inputEmail').touched)">Please enter a valid email!</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+
+                            <input type="password" class="form-control" id="password" formControlName="password" required>
+                            <small class="form-text text-muted danger" *ngIf="!regularForm.get('password').valid && (regularForm.get('password').dirty || regularForm.get('password').touched)">Password characters length must be between 4 and 24 !</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="textArea">Textarea</label>
+
+                            <textarea class="form-control" rows="3" id="textArea" formControlName="textArea" required></textarea>
+                            <small class="form-text text-muted danger" *ngIf="!regularForm.get('textArea').valid && (regularForm.get('textArea').dirty || regularForm.get('textArea').touched)">This field is required!</small>
+                        </div>
+                        <div class="form-group">
+                            <label class>Radios</label>
+                                <div class="custom-control custom-radio display-block">
+                                    <input type="radio" id="customRadioInline3" name="customRadioInline2" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline3">Option one is this</label>
+                                </div>
+                                <div class="custom-control custom-radio display-block">
+                                    <input type="radio" id="customRadioInline4" checked name="customRadioInline2" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline4">Option two can be something else</label>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger btn-raised">Cancel</button>
+                            <button type="button" class="btn btn-success btn-raised" [disabled]="!regularForm.valid">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reactive Form Validaton Ends -->
+
+<!-- Template-driven Form Validaton Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Template-driven Form</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <form class="form" (ngSubmit)="onTemplateFormSubmit()" #f="ngForm" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="floatEmail">Email</label>
+                                    <input type="email" class="form-control" id="floatEmail" name="floatEmail" ngModel required email #floatEmail="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+                                    <small class="form-text text-muted danger" *ngIf="!floatEmail.valid && (floatEmail.dirty || floatEmail.touched)">Please enter a valid email!</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="floatPassword">Password</label>
+                                    <input type="password" class="form-control" id="floatPassword" name="floatPassword" ngModel required minlength="4" maxlength="24" [ngModelOptions]="{updateOn: 'blur'}"
+                                        #floatPassword="ngModel">
+                                    <small class="form-text text-muted danger" *ngIf="!floatPassword.valid && (floatPassword.dirty || floatPassword.touched)">Password characters length must be between 4 and 24 !</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="floattextArea">Textarea</label>
+                                    <textarea class="form-control" rows="3" id="floattextArea" name="floattextArea" ngModel required #textArea="ngModel" [ngModelOptions]="{updateOn: 'blur'}"></textarea>
+                                    <small class="form-text text-muted danger" *ngIf="!textArea.valid && (textArea.dirty || textArea.touched)">This field is required!</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button type="button" class="btn btn-success btn-raised">Cancel</button>
+                                <button type="button" class="btn btn-danger btn-raised" [disabled]="!f.valid">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Template-driven Form Validaton Ends -->
+
+<!-- Custom Form Validaton Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Custom Validations (Template-driven Form)</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <form (ngSubmit)="onCustomFormSubmit()" #vform="ngForm">
+
+                        <div class="form-group">
+                            <label for="required">required</label>
+                            <input type="text" class="form-control" ngModel name="required" #required="ngModel" required placeholder="required" />
+                            <small class="form-text text-muted danger" *ngIf="required.errors?.required">required error</small>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="minlength">minlength</label>
+                            <input type="text" class="form-control" ngModel name="minlength" #minlength="ngModel" placeholder="minlength 5" minlength="5"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="minlength.errors?.minlength">minlength error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxlength">maxlength</label>
+                            <input type="text" class="form-control" ngModel name="maxlength" #maxlength="ngModel" placeholder="maxlength 5" maxlength="5"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="maxlength.errors?.maxlength">required error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="rangelength">rangelength</label>
+                            <input type="text" class="form-control" ngModel name="rangelength" #rangelength="ngModel" placeholder="rangeLength [5, 9]"
+                                [rangeLength]="[5, 9]" />
+                            <small class="form-text text-muted danger" *ngIf="rangelength.errors?.rangeLength">rangelength error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="pattern">pattern</label>
+                            <input type="text" class="form-control" ngModel name="pattern" #pattern="ngModel" placeholder="[a-z]{6}" pattern="[a-z]{6}"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="pattern.errors?.pattern">pattern error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="base64">base64</label>
+                            <input type="text" class="form-control" ngModel name="base64" #base64="ngModel" placeholder="base64" base64 />
+                            <small class="form-text text-muted danger" *ngIf="base64.errors?.base64">base64 error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="creditCard">creditCard</label>
+                            <input type="text" class="form-control" ngModel name="creditCard" #creditCard="ngModel" placeholder="creditCard" creditCard
+                            />
+                            <small class="form-text text-muted danger" *ngIf="creditCard.errors?.creditCard">creditCard error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">date</label>
+                            <input type="text" class="form-control" ngModel name="date" #date="ngModel" placeholder="date" date />
+                            <small class="form-text text-muted danger" *ngIf="date.errors?.date">date error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateISO">dateISO</label>
+                            <input type="text" class="form-control" ngModel name="dateISO" #dateISO="ngModel" placeholder="dateISO" dateISO />
+                            <small class="form-text text-muted danger" *ngIf="dateISO.errors?.dateISO">dateISO error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxDate">maxDate</label>
+                            <input type="text" class="form-control" ngModel name="maxDate" #maxDate="ngModel" placeholder="maxDate 2017-11-11" maxDate="2017-11-11"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="maxDate.errors?.maxDate">maxDate error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="minDate">minDate</label>
+                            <input type="text" class="form-control" ngModel name="minDate" #minDate="ngModel" placeholder="minDate 2017-11-11" minDate="2017-11-11"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="minDate.errors?.minDate">minDate error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="digits">digits</label>
+                            <input type="text" class="form-control" ngModel name="digits" #digits="ngModel" placeholder="digits" digits />
+                            <small class="form-text text-muted danger" *ngIf="digits.errors?.digits">digits error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="text" class="form-control" ngModel name="email" #email="ngModel" placeholder="email" email />
+                            <small class="form-text text-muted danger" *ngIf="email.errors?.email">email error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="equal">equal</label>
+                            <input type="text" class="form-control" ngModel name="equal" #equal="ngModel" placeholder="equal to apex" equal="apex" />
+                            <small class="form-text text-muted danger" *ngIf="equal.errors?.equal">equal error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="notEqual">notEqual</label>
+                            <input type="text" class="form-control" ngModel name="notEqual" #notEqual="ngModel" placeholder="not equal to apex" notEqual="apex"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="notEqual.errors?.notEqual">notEqual error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">equalTo</label>
+                            <input type="text" class="form-control" ngModel name="password" #password="ngModel" placeholder="password" required />
+                            <small class="form-text text-muted danger" *ngIf="password.errors?.required">required error</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ngModel name="equalTo" #equalTo="ngModel" placeholder="confirm password" [equalTo]="password"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="equalTo.errors?.equalTo">equalTo error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="oldPassword">notEqualTo</label>
+                            <input type="text" class="form-control" ngModel name="oldPassword" #oldPassword="ngModel" placeholder="password" required
+                            />
+                            <small class="form-text text-muted danger" *ngIf="oldPassword.errors?.required">required error</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ngModel name="notEqualTo" #notEqualTo="ngModel" placeholder="confirm password" [notEqualTo]="oldPassword"
+                            />
+                            <small class="form-text text-muted danger" *ngIf="notEqualTo.errors?.notEqualTo">notEqualTo error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="gt">gt</label>
+                            <input type="text" class="form-control" ngModel name="gt" #gt="ngModel" placeholder="gt 20" gt="20" />
+                            <small class="form-text text-muted danger" *ngIf="gt.errors?.gt">gt error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="lt">lt</label>
+                            <input type="text" class="form-control" ngModel name="lt" #lt="ngModel" placeholder="lt 10" lt="10" />
+                            <small class="form-text text-muted danger" *ngIf="lt.errors?.lt">lt error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="json">json</label>
+                            <input type="text" class="form-control" ngModel name="json" #json="ngModel" placeholder="json" json />
+                            <small class="form-text text-muted danger" *ngIf="json.errors?.json">json error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="max">max</label>
+                            <input type="text" class="form-control" ngModel name="max" #max="ngModel" placeholder="max 10" max="10" />
+                            <small class="form-text text-muted danger" *ngIf="max.errors?.max">max error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="min">min</label>
+                            <input type="text" class="form-control" ngModel name="min" #min="ngModel" placeholder="min 10" min="10" />
+                            <small class="form-text text-muted danger" *ngIf="min.errors?.min">min error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="number">number</label>
+                            <input type="text" class="form-control" ngModel name="number" #number="ngModel" placeholder="number" number />
+                            <small class="form-text text-muted danger" *ngIf="number.errors?.number">number error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">phone</label>
+                            <input type="text" class="form-control" ngModel name="phone" #phone="ngModel" placeholder="phone" phone />
+                            <small class="form-text text-muted danger" *ngIf="phone.errors?.phone">phone error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">url</label>
+                            <input type="text" class="form-control" ngModel name="url" #url="ngModel" placeholder="url" url />
+                            <small class="form-text text-muted danger" *ngIf="url.errors?.url">url error</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="uuid">uuid</label>
+                            <input type="text" class="form-control" ngModel name="uuid" #uuid="ngModel" placeholder="uuid" uuid />
+                            <small class="form-text text-muted danger" *ngIf="uuid.errors?.uuid">uuid error</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Custom Form Validaton Ends -->

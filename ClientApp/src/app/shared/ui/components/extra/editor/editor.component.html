@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">Quill Editor</div>
+    <p class="content-sub-header">quill editor with angular and TypeScript. ngx-quill is the new angular 2 and beyond implementation of ngQuill.</p>
+  </div>
+</div>
+<!-- Default Quill Editor starts -->
+<section id="quill-editor">
+  <div class="card">
+    <div class="card-header">
+      <h4>Default editor</h4>
+    </div>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <quill-editor [style]="{height: '200px'}" (onEditorCreated)="setFocus($event)"></quill-editor>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Default Quill Editor Ends -->
+
+  <!-- Reactive forms Quill Editor starts -->
+  <div class="card">
+    <div class="card-header">
+      <h4>Reactive Forms and patch value</h4>
+    </div>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-sm-12">
+          <form [formGroup]="form">
+            <div class="mb-2">
+              <button type="button" class="btn btn-raised btn-primary" (click)="hide=!(!!hide)">hide / show</button>
+              <button type="button" class="btn btn-raised btn-primary" (click)="patchValue()">patchValue</button>
+            </div>
+            <quill-editor #editor [style.display]="hide ? 'none' : 'block'" formControlName="editor"></quill-editor>
+            <p class="mt-2">
+              Output : {{form.controls.editor.value}}
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Reactive forms Quill Editor ends -->
+
+  <!-- Quill Editor without toolbar starts -->
+  <div class="card">
+    <div class="card-header">
+      <h4>Editor without toolbar + required and ngModule</h4>
+    </div>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="mb-2">
+            <button (click)="toggleReadOnly()" class="btn btn-raised btn-primary">Toggle ReadOnly</button>
+          </div>
+          <quill-editor [(ngModel)]="title" [maxLength]="5" [minLength]="3" [required]="true" [readOnly]="isReadOnly" [modules]="{toolbar: false}"
+            (onContentChanged)="logChange($event);" (onSelectionChanged)="logSelection($event);"></quill-editor>
+          <p class="mt-2">
+            isReadOnly : {{isReadOnly}} <br> Title : {{title}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Quill Editor without toolbar ends -->
+</section>

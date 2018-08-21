@@ -1,0 +1,99 @@
+
+@include exports("multiselect/layout") {
+
+    // Base
+    .k-multiselect {
+        @include border-radius();
+        width: 100%;
+
+        .k-loading-hidden {
+            visibility: hidden;
+        }
+    }
+
+    .k-multiselect-wrap {
+        min-height: calc( #{$input-inner-calc-size} );
+        cursor: text;
+
+        // Input
+        .k-input {
+            float: left;
+        }
+
+        // Token list
+        ul {
+            vertical-align: top;
+        }
+        li.k-button {
+            float: left;
+        }
+
+
+        // Token
+        .k-button {
+            min-height: add-three($form-line-height-em, $button-padding-y-sm, 2px);
+            padding: ($button-padding-y-sm / 2) ($button-padding-x / 2);
+            margin: $padding-y-sm 0 0 $padding-y-sm;
+            cursor: default;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            line-height: inherit;
+            white-space: normal;
+
+            .k-select {
+                display: flex;
+                cursor: pointer;
+                margin-left: $padding-x;
+            }
+
+            &:last-child {
+                margin-bottom: $padding-y-sm;
+            }
+        }
+
+        .k-searchbar {
+            // search bar must be floated to align after any selected tags
+            // (or align below them, if space is not available)
+            float: left;
+            width: auto;
+
+            .k-input {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .k-multiselect-wrap {
+        [dir='rtl'] > &,
+        .k-rtl & {
+            padding-left: ($padding-x * 3);
+            padding-right: 0;
+
+            li.k-button,
+            .k-input {
+                float: right;
+            }
+
+            .k-searchbar {
+                float: right;
+
+                .k-input {
+                    padding-left: 0;
+                    padding-right: $input-padding-x;
+                }
+            }
+
+            .k-button {
+                width: auto;
+                margin-right: $padding-y-sm;
+                margin-left: 0;
+
+                .k-select {
+                    margin-left: 0;
+                    margin-right: $padding-x;
+                }
+            }
+        }
+    }
+}

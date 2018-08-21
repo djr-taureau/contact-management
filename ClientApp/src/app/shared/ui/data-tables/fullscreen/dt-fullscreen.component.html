@@ -1,0 +1,24 @@
+<!--Fullscreen DataTable Starts-->
+<section id="fullscreen" class="mb-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="content-header">Fullscreen DataTable</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="height-600">
+                <ngx-datatable class="bootstrap fullscreen" style="top: 52px" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0"
+                    [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="rows">
+                    <ngx-datatable-column name="Id" [width]="80"></ngx-datatable-column>
+                    <ngx-datatable-column name="Name" [width]="300"></ngx-datatable-column>
+                    <ngx-datatable-column name="Gender"></ngx-datatable-column>
+                    <ngx-datatable-column name="Age"></ngx-datatable-column>
+                    <ngx-datatable-column name="City" [width]="300" prop="address.city"></ngx-datatable-column>
+                    <ngx-datatable-column name="State" [width]="300" prop="address.state"></ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Fullscreen DataTable Ends-->

@@ -1,0 +1,18 @@
+<!-- Filter Datatable Options Starts -->
+<section id="filter" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Filter Option</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable #table class='bootstrap' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                [rowHeight]="'auto'" [limit]="10" [rows]='rows'>
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
+<!-- Filter Datatable Options Ends -->

@@ -1,0 +1,9 @@
+@import "../../modules/@progress/kendo-theme-default/scss/tooltip/theme";
+
+@include exports("tooltip/theme/bootstrap") {
+
+    .k-tooltip {
+        font-size: $tooltip-font-size;
+    }
+
+}

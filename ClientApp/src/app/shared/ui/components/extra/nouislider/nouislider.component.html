@@ -1,0 +1,168 @@
+<!--NoUI Slider Starts-->
+<section id="slider-values">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="content-header">NoUI Slider</div>
+        </div>
+    </div>
+    <div class="row">
+        <!--Single Value NoUI Slider Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Single Value</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <nouislider [min]="someMin" [max]="someMax" [step]="0.05" [(ngModel)]="someValue"  [disabled]="disabled"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Single Value NoUI Slider Ends-->
+        
+        <!--Single Value NoUI Slider in form Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Single value (in &lt;form&gt;)</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <form [formGroup]="form1">
+                                <nouislider [min]="0" [max]="20" [step]="0.5" [formControl]="form1.controls.single"></nouislider>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Single Value NoUI Slider in form Ends-->
+
+        <!--Range NoUI Slider Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Range</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <nouislider [connect]="true" [min]="0" [max]="15" [step]="1" [(ngModel)]="someRange"></nouislider>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <!--Range NoUI Slider Ends-->
+
+        <!--Range NoUI Slider in form Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Range (in &lt;form&gt;)</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <form [formGroup]="form2">
+                                <nouislider [connect]="true" [min]="0" [max]="10" [step]="1" [formControl]="form2.controls.range"></nouislider>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Range NoUI Slider in form Ends-->
+
+        <!--Range NoUI Slider with config Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Range with config</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center mb-3">
+                        <div class="form-group">
+                            <nouislider [config]="someRange2config" [limit]="10" [(ngModel)]="someRange2"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Range NoUI Slider with config Ends-->
+
+        <!--Keyboard support Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Keyboard support</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center mb-3">
+                        <div class="form-group">
+                            <nouislider [config]="someKeyboardConfig" [(ngModel)]="someKeyboard"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Keyboard support Ends-->
+
+        <!--With Custom Key Handler Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">With Custom Key Handler</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center mb-3">
+                        <div class="form-group">
+                            <nouislider [config]="someKeyboardConfig2" [(ngModel)]="someKeyboard2"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--With Custom Key Handler Ends-->
+
+        <!--NoUI Slider with Tooltip Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tooltips</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <nouislider [min]="0" [max]="10" [step]="0.05" [(ngModel)]="someRange3" [tooltips]="[ false, true ]" style="margin-top: 4em;"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--NoUI Slider with Tooltip Ends-->
+
+        <!--NoUI Slider with Tooltip custom formatting Starts-->
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">With custom formatting</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block text-center">
+                        <div class="form-group">
+                            <nouislider [config]="someTimeConfig" [(ngModel)]="someTime" style="margin-bottom: 5rem"></nouislider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--NoUI Slider with Tooltip custom formatting Ends-->
+    </div>
+</section>
+<!-- // Slider values section end -->

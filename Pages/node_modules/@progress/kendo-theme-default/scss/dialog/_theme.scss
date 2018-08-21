@@ -1,0 +1,59 @@
+@include exports("dialog/theme") {
+
+    $dialog-titlebar-border-color: inherit !default;
+    $dialog-titlebar-bg: $accent !default;
+    $dialog-titlebar-text: $accent-contrast !default;
+    $hover-active-selector: ":hover, .k-state-hover, :active, .k-state-active";
+
+    .k-dialog {}
+
+
+    // Titlebar
+    .k-dialog-titlebar {
+        @include fill( $dialog-titlebar-text, $dialog-titlebar-bg, $dialog-titlebar-border-color );
+    }
+
+
+    .k-dialog-buttongroup {
+        border-top-width: 1px;
+        align-items: stretch;
+
+        .k-button {
+            padding: ($window-inner-padding-x * .75) $window-inner-padding-x;
+            border-width: 0;
+            border-color: inherit;
+            flex: 1 0 0;
+        }
+        .k-button + .k-button {
+            border-left-width: 1px;
+
+            .k-rtl &,
+            [dir='rtl'] & {
+                border-left-width: 0;
+                border-right-width: 1px;
+            }
+        }
+
+
+        // Normal state
+        .k-button:not(:hover):not(.k-state-hover):not(:active):not(.k-state-eactive) {
+            color: inherit;
+            background: none;
+        }
+        .k-primary:not(:hover):not(.k-state-hover):not(:active):not(.k-state-eactive) {
+            color: $accent;
+        }
+
+
+        // Border radius
+        .k-button,
+        .k-button:first-child,
+        .k-button:last-child,
+        .k-group-start,
+        .k-group-end {
+            @include border-radius( 0 );
+        }
+
+    }
+
+}

@@ -1,0 +1,194 @@
+
+<!-- Line Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">NGX Charts</div>
+        <p class="content-sub-header">Declarative Charting Framework for Angular4 and beyond!</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Line Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="line-chart1" class="height-400">
+                        <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient" [xAxis]="lineChartShowXAxis"
+                            [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend" [showXAxisLabel]="lineChartShowXAxisLabel"
+                            [showYAxisLabel]="lineChartShowYAxisLabel" [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="lineChartYAxisLabel"
+                            [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation" (select)="onSelect($event)">
+                        </ngx-charts-line-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Line Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="line-chart2" class="height-400">
+                        <ngx-charts-line-chart  [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient"
+                            [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend" [showXAxisLabel]="lineChartShowXAxisLabel"
+                            [showYAxisLabel]="lineChartShowYAxisLabel" [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="lineChartYAxisLabel"
+                            [autoScale]="lineChartAutoScale" (select)="onSelect($event)">
+                        </ngx-charts-line-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Line Chart Ends -->
+
+<!-- Area Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">Area Charts</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Area Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="area-chart1" class="height-400">
+                        <ngx-charts-area-chart [scheme]="areaChartColorScheme" [results]="areaChartMulti" [gradient]="areaChartGradient" [xAxis]="areaChartShowXAxis"
+                            [yAxis]="areaChartShowYAxis" [legend]="areaChartShowLegend" [showXAxisLabel]="areaChartShowXAxisLabel"
+                            [showYAxisLabel]="areaChartShowYAxisLabel" [xAxisLabel]="areaChartXAxisLabel" [yAxisLabel]="areaChartYAxisLabel"
+                            [autoScale]="areaChartAutoScale" [curve]="areaChartLineInterpolation" (select)="onSelect($event)">
+                        </ngx-charts-area-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Area Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="area-chart2" class="height-400">
+                        <ngx-charts-area-chart [scheme]="areaChartColorScheme" [results]="areaChartMulti" [gradient]="areaChartGradient" [xAxis]="areaChartShowXAxis"
+                            [yAxis]="areaChartShowYAxis" [legend]="areaChartShowLegend" [showXAxisLabel]="areaChartShowXAxisLabel"
+                            [showYAxisLabel]="areaChartShowYAxisLabel" [xAxisLabel]="areaChartXAxisLabel" [yAxisLabel]="areaChartYAxisLabel"
+                            [autoScale]="areaChartAutoScale" (select)="onSelect($event)">
+                        </ngx-charts-area-chart>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Area Chart Ends -->
+
+<!-- Vertical Bar Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">Bar Charts</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Vertical Bar Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="vartical-bar-chart" class="height-400">
+                        <ngx-charts-bar-vertical-2d [scheme]="barChartColorScheme" [results]="barChartmulti" [gradient]="barChartGradient" [xAxis]="barChartShowXAxis"
+                            [yAxis]="barChartShowYAxis" [legend]="barChartShowLegend" [showXAxisLabel]="barChartShowXAxisLabel"
+                            [showYAxisLabel]="barChartShowYAxisLabel" [xAxisLabel]="barChartXAxisLabel" [yAxisLabel]="barChartYAxisLabel"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical-2d>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vertical Bar Chart Ends -->
+
+<!-- Horizontal Bar Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Horizontal Bar Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="horizontal-bar-chart" class="height-400">
+                        <ngx-charts-bar-horizontal-2d [scheme]="barChartColorScheme" [results]="barChartmulti" [gradient]="barChartGradient" [xAxis]="barChartShowXAxis"
+                            [yAxis]="barChartShowYAxis" [legend]="barChartShowLegend" [showXAxisLabel]="barChartShowXAxisLabel"
+                            [showYAxisLabel]="barChartShowYAxisLabel" [xAxisLabel]="barChartXAxisLabel" [yAxisLabel]="barChartYAxisLabel"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-horizontal-2d>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vertical Bar Chart Ends -->
+
+<!-- Pie Chart Starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">Pie Charts</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Pie Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="pie-chart1" class="height-400">
+                        <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="pieChartSingle" [legend]="pieChartShowLegend" [explodeSlices]="pieChartExplodeSlices"
+                            [labels]="pieChartShowLabels" [doughnut]="pieChartDoughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+                        </ngx-charts-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Pie Chart</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="pie-chart2" class="height-400">
+                        <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="pieChartSingle" [legend]="pieChartShowLegend" [explodeSlices]="pieChart1ExplodeSlices"
+                            [labels]="pieChartShowLabels" [doughnut]="pieChart1Doughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+                        </ngx-charts-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pie Chart Ends -->

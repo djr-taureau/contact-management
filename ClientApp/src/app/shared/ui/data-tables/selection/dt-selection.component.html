@@ -1,0 +1,17 @@
+<!--Selection DataTable Starts-->
+<section id="selection" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Selection DataTable</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ngx-datatable class="bootstrap selection-cell" [rows]="rows" [columnMode]="'force'" [columns]="columns" [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="50" [selected]="selected" [selectionType]="'cell'" (select)="onSelect($event)"
+                (activate)="onActivate($event)">
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
+<!--Selection DataTable Ends-->

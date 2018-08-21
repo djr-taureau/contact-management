@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-12">
+        <div class="content-header">Smart Data Table</div>
+        <p class="content-sub-header">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</p>
+    </div>
+</div>
+<!--Simple Table Starts-->
+<section id="simple">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Simple Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Simple Table Ends-->
+
+<!--Advanced filter Starts-->
+<section id="advanced">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Advanced filter</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <input #search class="search mb-2" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+                        <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Advanced filter Ends-->
+
+<!--built-in column filter types Starts-->
+<section id="filter">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">built-in column filter types</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <ng2-smart-table [settings]="filtersettings" [source]="filterSource"></ng2-smart-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--built-in column filter types Ends-->
+
+<!--Confirm Action Starts-->
+<section id="action">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Confirm Action</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-block">
+                        <ng2-smart-table [settings]="alertsettings" [source]="alertSource" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+                            (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Confirm Action Ends-->

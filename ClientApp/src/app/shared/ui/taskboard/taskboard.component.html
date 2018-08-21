@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">Task Board</div>
+    <p class="content-sub-header"></p>
+  </div>
+</div>
+<!-- Taskboard Starts -->
+<section id="taskboard">
+
+
+  <div class="row">
+    <div class="col-md-3 col-12">
+      <h4 class="ml-2 mt-2 text-bold-500"><i class="ft-list mr-1"></i> To Dos</h4>
+      <div class='dragdrop-container' [dragula]='"task-group"' [dragulaModel]='todo'>
+        <div *ngFor='let todo of todo'>
+          <div class="card">
+            <div class="card-block pt-3">
+              <div class="clearfix">
+                <h5 class="text-bold-500 primary float-left">{{todo.taskTitle}}</h5>
+                <div class="actions float-right">
+                  <i class="ft-edit mr-1 info"></i>
+                  <i class="ft-trash-2 danger"></i>
+                </div>
+              </div>
+              <p>{{todo.taskMessage}}</p>
+              <img [src]="[todo.assignedTo]" class="rounded-circle width-50 mr-2"> <span class="primary">{{todo.createdOn}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-12">
+      <h4 class="ml-2 mt-2 text-bold-500"><i class="ft-trending-up mr-1"></i> In Progress</h4>
+      <div class='dragdrop-container' [dragula]='"task-group"' [dragulaModel]='inProcess'>
+        <div *ngFor='let inProcess of inProcess'>
+          <div class="card">
+            <div class="card-block pt-3">
+              <div class="clearfix">
+                <h5 class="text-bold-500 info float-left">{{inProcess.taskTitle}}</h5>
+                <div class="actions float-right">
+                  <i class="ft-edit mr-1 info"></i>
+                  <i class="ft-trash-2 danger"></i>
+                </div>
+              </div>
+              <p>{{inProcess.taskMessage}}</p>
+              <img [src]="[inProcess.assignedTo]" class="rounded-circle width-50 mr-2"> <span class="info">{{inProcess.createdOn}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-12">
+      <h4 class="ml-2 mt-2 text-bold-500"><i class="ft-thumbs-up mr-1"></i>Completed</h4>
+      <div class='dragdrop-container' [dragula]='"task-group"' [dragulaModel]='completed'>
+        <div *ngFor='let completed of completed'>
+          <div class="card">
+            <div class="card-block pt-3">
+              <div class="clearfix">
+                <h5 class="text-bold-500 success float-left">{{completed.taskTitle}}</h5>
+                <div class="actions float-right">
+                  <i class="ft-edit mr-1 info"></i>
+                  <i class="ft-trash-2 danger"></i>
+                </div>
+              </div>
+              <p>{{completed.taskMessage}}</p>
+              <img [src]="[completed.assignedTo]" class="rounded-circle width-50 mr-2"> <span class="success">{{completed.createdOn}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-12">
+      <h4 class="ml-2 mt-2 text-bold-500"><i class="ft-alert-octagon mr-1"></i>On Hold</h4>
+      <div class='dragdrop-container' [dragula]='"task-group"' [dragulaModel]='backLog'>
+        <div *ngFor='let backLog of backLog'>
+          <div class="card">
+            <div class="card-block pt-3">
+              <div class="clearfix">
+                <h5 class="text-bold-500 warning float-left">{{backLog.taskTitle}}</h5>
+                <div class="actions float-right">
+                  <i class="ft-edit mr-1 info"></i>
+                  <i class="ft-trash-2 danger"></i>
+                </div>
+              </div>
+              <p>{{backLog.taskMessage}}</p>
+              <img [src]="[backLog.assignedTo]" class="rounded-circle width-50 mr-2"> <span class="warning">{{backLog.createdOn}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="taskboard-app-form bg-blue-grey bg-lighten-5">
+    <div class="card">
+      <div class="card-block pt-3">
+        <h5 class="text-bold-500">Create new Task</h5>
+        <form class="taskboard-app-input row">
+          <fieldset class="form-group position-relative has-icon-left col-md-4 col-12 mb-1">
+            <div class="form-control-position">
+              <i class="icon-emoticon-smile"></i>
+            </div>
+            <input type="text" class="form-control" id="todoTitle" placeholder="Title" (keydown.enter)="$event.preventDefault()"
+              #todoTitle>
+            <div class="form-control-position control-position-right">
+              <i class="ft-image"></i>
+            </div>
+          </fieldset>
+          <fieldset class="form-group position-relative has-icon-left col-md-6 col-12 mb-1">
+            <div class="form-control-position">
+              <i class="icon-emoticon-smile"></i>
+            </div>
+            <input type="text" class="form-control" id="todoMessage" placeholder="Message" (keydown.enter)="$event.preventDefault()"
+              #todoMessage>
+            <div class="form-control-position control-position-right">
+              <i class="ft-image"></i>
+            </div>
+          </fieldset>
+         
+          <fieldset class="form-group position-relative has-icon-left col-md-2 col-12 mb-1">
+            <button type="button" class="btn btn-raised btn-primary" (click)="onAddTask()">
+              <i class="fa fa-paper-plane-o hidden-lg-up"></i> Create</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</section>
+<!-- Taskboard Ends -->
+

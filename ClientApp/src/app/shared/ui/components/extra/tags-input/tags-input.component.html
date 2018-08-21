@@ -1,0 +1,184 @@
+<section id="tags">
+  <div class="row">
+    <div class="col-12 mt-3 mb-1">
+      <div class="content-header">Input Tags</div>
+      <p class="content-sub-header"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Simple Input with two items</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [(ngModel)]="items" (onSelect)="onSelect($event)" [modelAsStrings]="true">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Simple Input with not removable items</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="items1" [removable]="false"></tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Simple Input with editable items</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [(ngModel)]="items2" [editable]="true" (onTagEdited)="onTagEdited($event)">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>An input which requires all tags to start with '@' and end with '$'</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="['@item']" [errorMessages]="errorMessages" [validators]="validators">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>An input which will transform the value of all added tags prepending '@' to the tag</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="['@item']" [onAdding]="transform">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Tags accepting only items from an autocomplete</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="['@item']" [onlyFromAutocomplete]="true">
+              <tag-input-dropdown [showDropdownIfEmpty]="true" [focusFirstElement]="true" [displayBy]="'value'" [identifyBy]="'id'" [autocompleteItems]="autocompleteItemsAsObjects">
+                <ng-template let-item="item" let-index="index">
+                  ({{ index }}) {{ item.id }}: {{ item.value }}
+                </ng-template>
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Tags dropdown with last provided</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="[]" [placeholder]="'Enter a new repo'" [secondaryPlaceholder]="'Search in Github'" [onlyFromAutocomplete]="true">
+              <tag-input-dropdown [autocompleteObservable]="requestAutocompleteItems">
+                <ng-template let-item="item" let-index="index" let-last="last">
+                  ({{ index }}) {{ item.id }}: {{ item.value }} # {{ last }}
+                </ng-template>
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>An input which allows adding items by pressing the key "space" of your keyboard</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="['@item']" [inputClass]="'myinput'" [inputId]="'myinputId'" [separatorKeyCodes]="[32, 188]">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Tags with Bootstrap theme</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [theme]="'bootstrap'" [ngModel]="['@item']" name="items">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Disabled tag input</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            Disable:
+            <input type="checkbox" [(ngModel)]="disabled" />
+
+            <tag-input [ngModel]="items3" [disabled]="disabled">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Drag and drop</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [(ngModel)]="dragAndDropExample" [modelAsStrings]="true" [dragZone]="'zone1'" [editable]="true">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Confirm adding and removing tags with Observables</h4>
+        </div>
+        <div class="card-block">
+          <div>
+            <tag-input [ngModel]="['item1']" [dragZone]="'zone1'" [modelAsStrings]="true" [onRemoving]="onRemoving" [onAdding]="onAdding">
+            </tag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

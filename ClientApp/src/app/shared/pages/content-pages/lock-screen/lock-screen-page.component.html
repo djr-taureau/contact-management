@@ -1,0 +1,39 @@
+<!--Lock Screen Starts-->
+<section id="lock-screen">
+    <div class="container-fluid gradient-crystal-clear">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card width-400">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="card-title font-medium-5 pt-2 ml-2">Peter Andil</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-right card-img overlap">
+                                <img alt="avtar" class="mb-1" src="assets/img/portrait/avatars/avatar-03.png" width="150">
+                            </div>                   
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate="">
+                                <div class="form-group mt-3">
+                                    <h3 class="text-center text-uppercase text-bold-400">Unlock User</h3>
+                                </div>
+                                <div class="form-group pt-3">
+                                    <input type="password" class="form-control" id="inputPass" name="inputPass" placeholder="Password" ngModel required>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-center mt-3">
+                                        <button type="button" class="btn btn-info btn-raised btn-lg py-1 mt-3 font-small-5 btn-block">Unlock</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Lock Screen Ends-->

@@ -1,0 +1,9 @@
+@include exports("tooltip/theme") {
+    .k-tooltip {
+        color: $tooltip-color;
+        background-color: $tooltip-bg;
+    }
+    .k-callout {
+        color: $tooltip-bg;
+    }
+}

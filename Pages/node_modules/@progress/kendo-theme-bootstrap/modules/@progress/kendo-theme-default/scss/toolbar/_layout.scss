@@ -1,0 +1,172 @@
+$toolbar-button-spacer: 0 !default;
+$toolbar-shadow: none !default;
+$toolbar-button-border-radius: 0 !default;
+$toolbar-border-width: 1px !default;
+$toolbar-separator-padding-y: $toolbar-button-padding-y !default;
+
+@include exports("toolbar/layout") {
+
+    // Base
+    .k-toolbar {
+        padding: $toolbar-padding-y $toolbar-padding-x;
+        border-width: $toolbar-border-width;
+        line-height: $form-line-height;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        overflow: hidden;
+        box-shadow: $toolbar-shadow;
+
+        &.k-toolbar-resizable {
+            flex-wrap: nowrap;
+        }
+
+        > * {
+            display: inline-flex;
+            align-items: stretch;
+            align-content: center;
+            vertical-align: middle;
+            margin-left: $toolbar-padding-x;
+        }
+        .k-overflow-anchor + * {
+            margin-left: 0;
+        }
+
+        .k-button,
+        .k-button-group,
+        .k-separator,
+        .k-split-button,
+        .k-textbox,
+        .k-widget,
+        label {
+            vertical-align: middle;
+        }
+
+
+        // Button
+        .k-button {
+            padding: $toolbar-button-padding-y $toolbar-button-padding-x;
+
+            &::before {
+                @include border-radius( $toolbar-button-border-radius );
+            }
+        }
+
+        & > .k-button:not(.k-overflow-anchor) + .k-button {
+            margin-left: $toolbar-button-spacer;
+        }
+
+        // Toggle button
+        .k-toggle-button {}
+
+
+        // Button group
+        .k-button-group {}
+        .k-button-group .k-button {
+            border-radius: 0;
+        }
+        .k-button-group .k-group-start,
+        .k-button-group .k-button:first-child {
+            @include border-radius( $toolbar-button-border-radius 0 0 $toolbar-button-border-radius );
+        }
+        .k-button-group .k-group-end,
+        .k-button-group .k-button:last-child {
+            @include border-radius( 0 $toolbar-button-border-radius $toolbar-button-border-radius 0 );
+        }
+
+        // Split button
+        .k-split-button {
+            .k-button {
+                @include border-left-radius-only();
+            }
+            .k-button.k-split-button-arrow {
+                @include border-right-radius-only();
+                margin-left: -1px;
+                padding: $button-padding-x-sm;
+            }
+        }
+
+        // Dropdowns and Inputs
+        // TODO unselect if necessary after the design for inputs in toolbar is completed
+        //.k-autocomplete,
+        //.k-dateinput-wrap,
+        //.k-multiselect-wrap,
+        //.k-numeric-wrap,
+        .k-picker-wrap,
+        .k-dropdown-wrap {
+
+            &::before {
+                @extend .k-button::before;
+            }
+        }
+
+
+        // Overflow anchor
+        .k-overflow-anchor {
+            @include border-radius( 0 );
+            padding: $toolbar-padding-y;
+            width: calc( #{$toolbar-inner-calc-size} );
+            height: 100%;
+            margin: 0;
+            border-width: 0 0 0 1px;
+            border-color: inherit;
+            background-clip: padding-box;
+            box-sizing: border-box;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            &::before {
+                display: block;
+            }
+        }
+
+
+        // Separator
+        .k-separator {
+            @extend %hr-vertical;
+            padding: $toolbar-separator-padding-y 0;
+            margin: 0 $toolbar-padding-x;
+
+            & + * {
+                margin-left: 0;
+            }
+        }
+    }
+
+
+    .k-overflow-container {
+
+        // Group
+        .k-overflow-tool-group {
+            display: block;
+        }
+
+        // Button group
+        .k-button-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        // Hidden items
+        .k-tool.k-state-disabled,
+        .k-overflow-hidden {
+            display: none;
+        }
+    }
+
+    // RTL
+    .k-rtl .k-toolbar {
+
+        .k-overflow-anchor {
+            right: auto;
+            left: 0;
+            border-width: 0 1px 0 0;
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">FAQs</div>
+    <p class="content-sub-header">We're here to help</p>
+  </div>
+</div>
+<!-- faq starts -->
+<section id="faq">
+  <div class="row">
+    <div class="col-12">
+      <div class="card gradient-purple-bliss white text-center p-4">
+        <div class="card-header">
+          <h1>We're here to help!!</h1>
+          <p><em>If you have any question you can ask below or enter what you are looking for!</em></p>
+        </div>
+        <div class="card-block">
+          <fieldset class="form-group col-xl-12 col-lg-10 col-10">
+            <input type="text" class="form-control" placeholder="Search in faqs.." (input)="filter($event.target.value)" #messageInput>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-block">
+          <ngb-accordion [closeOthers]="true">
+            <ngb-panel [id]="faq.faqId" *ngFor="let faq of faqs">
+                <ng-template ngbPanelTitle>
+                   <h5><i class="icon-question mr-2"></i> <span> {{faq.title}}</span></h5>
+                  </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="card-block">
+                  {{faq.content}}
+                </div>
+              </ng-template>
+            </ngb-panel>           
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- faq Ends -->

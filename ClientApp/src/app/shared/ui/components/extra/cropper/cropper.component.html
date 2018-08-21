@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">Image Cropper</div>
+    <p class="content-sub-header"></p>
+  </div>
+</div>
+<!-- Cropper starts -->
+<section id="tours">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Cropper</h4>
+        </div>
+        <div class="card-block">
+          <div class="file-upload mb-3">
+            <span class="text">Upload File : </span>
+            <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+          </div>
+          <img-cropper #cropper [image]="data" [settings]="cropperSettings" class="float-left mr-4"></img-cropper>
+          <br>
+          <span class="result" *ngIf="data.image">
+            <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" class="rounded-circle">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cropper Ends -->
+
+</section>

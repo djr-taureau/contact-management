@@ -1,0 +1,143 @@
+<!-- // Basic example section Starts -->
+<section id="basic-examples">
+    <div class="row">
+        <div class="col-sm-12 mt-3 mb-1">
+            <div class="content-header">SweetAlert</div>
+            <p class="content-sub-header">SweetAlert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. It's even highly customizable, as you can see below!</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="row mt-1">
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="basic-alert" (click)="basicAlert()">Basic</button>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="with-title" (click)="withTitle()">With Title</button>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="html-alert" (click)="htmlAlert()">HTML</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- // Basic example section end -->
+
+<!-- Types section start -->
+<section id="types">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            <div class="content-header">Types</div>
+            <p class="content-sub-header">The type of the modal. SweetAlert comes with 5 built-in types which will show a corresponding icon animation: "warning", "error", "success" "info" and "question". You can also set it as "input" to get a prompt modal. It can either be put in the object under the key "type" or passed as the third parameter of the function.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="row mt-1">
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <button type="button" class="btn btn-secondary btn-raised btn-block mb-5" id="type-question" (click)="typeQuestion()">Question</button>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <button type="button" class="btn btn-success btn-raised btn-block mb-5" id="type-success" (click)="typeSuccess()">Success</button>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <button type="button" class="btn btn-info btn-raised btn-block mb-5" id="type-info" (click)="typeInfo()">Info</button>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <button type="button" class="btn btn-warning btn-raised btn-block mb-5" id="type-warning" (click)="typeWarning()">Warning</button>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <button type="button" class="btn btn-danger btn-raised btn-block mb-5" id="type-error" (click)="typeError()">Error</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- // Types section end -->
+
+
+<!-- Options section start -->
+<section id="options">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            <div class="content-header">Options</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="row mt-1">
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Custom Icon</h5>
+                        <p><code>imageUrl</code> is used to add a customized icon for the modal. Should contain a string with the path to the image.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="custom-icon" (click)="customIcon()">Custom Icon</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Auto Close Timer</h5>
+                        <p>A message with auto close timer. <code>timer</code> is default set to <code>null</code>. You can set timer in ms (milliseconds).</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="auto-close" (click)="autoClose()">Auto Close</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Allow Outside Click</h5>
+                        <p>If <code>allowOutsideClick</code> is set to <code>true</code>, the user can dismiss the modal by clicking outside it.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="outside-click" (click)="outsideClick()">Click Outside</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Ajax Request</h5>
+                        <p>Set <code>showLoaderOnConfirm</code> to true to disable the buttons and show that something is loading. AJAX request for example.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="ajax-request" (click)="ajaxRequest()">Ajax</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Button Options</h5>
+                        <p>Custom HTML description and buttons</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="custom-button" (click)="customButton()">Custom HTML and buttons</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Prompt Function</h5>
+                        <p>A replacement for the "prompt" function. You can set <code>type</code> as "input" to get a prompt modal.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="prompt-function" (click)="promptFunction()">Prompt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- // Options section end -->
+
+<!-- Button Action option section start -->
+<section id="action-option">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            <div class="content-header">Button Actions</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-block">
+                <div class="row mt-1">
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Confirm Button Action</h5>
+                        <p>A warning message, with a function attached to the "Confirm"-button.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="confirm-text" (click)="confirmText()">Confirm Text</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Confirm &amp; Cancel Button</h5>
+                        <p>Confirm and cancel button excecution options.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="confirm-cancel" (click)="confirmCancelButton()">Buttons Actions</button>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <h5 class="mt-4">Chaining modals</h5>
+                        <p>Changing modal on next button.</p>
+                        <button type="button" class="btn btn-primary btn-raised btn-block" id="steps" (click)="steps()">Steps</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- // Button Confirm option section end -->
